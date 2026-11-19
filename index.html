@@ -463,7 +463,7 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   <div class="wrap">
     <span>Konyhaterv · a 3 kézi vázlat és a helyszíni felmérés alapján</span>
     <span>Minden méret mm-ben, kész falfelülettől mérve</span>
-    <span>Verzió: 2026-11-19e · hűtő-fagyasztó két ajtóval</span>
+    <span>Verzió: 2026-11-19f · munkalap és hátfal külön színezhető</span>
   </div>
 </footer>
 
@@ -942,17 +942,19 @@ for(const [n,t,b,warn] of NOTES){
 
 /* Minden változatban más a FELSŐ front színe is, különben a váltás nem látszik. */
 const PALETTES = {
-  sage:     {name:'Zsálya & krém',     base:'#6E7A66', upper:'#EDE7DA', tall:'#6E7A66', top:'#C7A87B', plinth:'#2F332E', carcass:'#DED8CC'},
-  graphite: {name:'Grafit & fehér',    base:'#3A3F44', upper:'#F2F0EC', tall:'#3A3F44', top:'#D7D3CB', plinth:'#212427', carcass:'#CFCCC6'},
-  oak:      {name:'Krém & tölgy',      base:'#E4DCCE', upper:'#B78A57', tall:'#B78A57', top:'#4B4945', plinth:'#35322E', carcass:'#D8CFBF'},
-  navy:     {name:'Tengerkék, egyszínű',base:'#2F3D52', upper:'#2F3D52', tall:'#2F3D52', top:'#DEDAD2', plinth:'#1C2533', carcass:'#AEB6C0'},
-  cashmere: {name:'Kasmír & dió',      base:'#C9B9A2', upper:'#C9B9A2', tall:'#7A5638', top:'#7A5638', plinth:'#4A3A2C', carcass:'#DCD3C4'},
-  forest:   {name:'Erdőzöld, egyszínű',base:'#2F4438', upper:'#2F4438', tall:'#2F4438', top:'#2A2C2E', plinth:'#1A241E', carcass:'#9FAEA4'}
+  sage:     {name:'Zsálya & krém',     base:'#6E7A66', upper:'#EDE7DA', tall:'#6E7A66', top:'#C7A87B', splash:'#E8E3D8', plinth:'#2F332E', carcass:'#DED8CC'},
+  graphite: {name:'Grafit & fehér',    base:'#3A3F44', upper:'#F2F0EC', tall:'#3A3F44', top:'#D7D3CB', splash:'#EDEBE6', plinth:'#212427', carcass:'#CFCCC6'},
+  oak:      {name:'Krém & tölgy',      base:'#E4DCCE', upper:'#B78A57', tall:'#B78A57', top:'#4B4945', splash:'#D9D4CA', plinth:'#35322E', carcass:'#D8CFBF'},
+  navy:     {name:'Tengerkék, egyszínű',base:'#2F3D52', upper:'#2F3D52', tall:'#2F3D52', top:'#DEDAD2', splash:'#EFEDE8', plinth:'#1C2533', carcass:'#AEB6C0'},
+  cashmere: {name:'Kasmír & dió',      base:'#C9B9A2', upper:'#C9B9A2', tall:'#7A5638', top:'#7A5638', splash:'#E6DED0', plinth:'#4A3A2C', carcass:'#DCD3C4'},
+  forest:   {name:'Erdőzöld, egyszínű',base:'#2F4438', upper:'#2F4438', tall:'#2F4438', top:'#2A2C2E', splash:'#C9CFC8', plinth:'#1A241E', carcass:'#9FAEA4'}
 };
-const COLOR_KEYS   = ['base','upper','tall','top','plinth','carcass'];
+const COLOR_KEYS   = ['base','upper','tall','top','splash','plinth','carcass'];
+const OLD_KEYS     = ['base','upper','tall','top','plinth','carcass'];   // régi, hátfal nélküli linkek
 const COLOR_LABELS = {
   base:'Alsó szekrény frontok', upper:'Felső szekrény frontok', tall:'Magas elemek (hűtő, sütő)',
-  top:'Munkalap és hátfal',     plinth:'Lábazat',               carcass:'Korpusz, látszó élek'
+  top:'Munkalap',               splash:'Hátfal a munkalap fölött',
+  plinth:'Lábazat',             carcass:'Korpusz, látszó élek'
 };
 
 const canvas = document.getElementById('scene');
@@ -1156,7 +1158,7 @@ function applyColors(c){
   M.upper.color.set(current.upper);
   M.tall.color.set(current.tall);
   M.top.color.set(current.top);
-  M.splash.color.set(current.top);
+  M.splash.color.set(current.splash);
   M.plinth.color.set(current.plinth);
   M.carcass.color.set(current.carcass);
   M.shelf.color.set(current.base);
@@ -1922,8 +1924,13 @@ function readHash(){
   if(h.startsWith('p=') && PALETTES[h.slice(2)]){ selectPreset(h.slice(2)); return true; }
   if(h.startsWith('c=')){
     const parts = h.slice(2).split('-');
-    if(parts.length===COLOR_KEYS.length && parts.every(x=>/^[0-9a-fA-F]{6}$/.test(x))){
-      const c={}; COLOR_KEYS.forEach((k,i)=> c[k]='#'+parts[i].toLowerCase());
+    const valid = parts.every(x=>/^[0-9a-fA-F]{6}$/.test(x));
+    const keys = !valid ? null
+               : parts.length===COLOR_KEYS.length ? COLOR_KEYS
+               : parts.length===OLD_KEYS.length   ? OLD_KEYS : null;
+    if(keys){
+      const c={}; keys.forEach((k,i)=> c[k]='#'+parts[i].toLowerCase());
+      if(keys===OLD_KEYS) c.splash = c.top;     // régi link: a hátfal a munkalap színét kapja
       applyColors(c); syncInputs();
       palrow.querySelectorAll('.pal').forEach(x=>x.setAttribute('aria-pressed','false'));
       document.getElementById('custom').open = true;
