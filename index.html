@@ -196,6 +196,36 @@ section .wrap{padding-block:48px}
 .pal .dots i{width:20px;height:20px;border-radius:50%;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
 .pal .dots i+i{margin-left:-7px}
 
+.custom{margin-top:12px;border:1px solid var(--line);background:var(--surface)}
+.custom summary{
+  cursor:pointer;padding:11px 16px;list-style:none;display:flex;align-items:center;gap:9px;
+  font-family:var(--font-m);font-size:12px;color:var(--ink-2)
+}
+.custom summary::-webkit-details-marker{display:none}
+.custom summary::before{content:"+";color:var(--mark);font-size:14px;line-height:1}
+.custom[open] summary::before{content:"–"}
+.custom summary:hover{color:var(--ink)}
+.custom summary:focus-visible{outline:2px solid var(--mark);outline-offset:-2px}
+.customgrid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1px;
+  background:var(--line);border-top:1px solid var(--line)
+}
+.cfield{background:var(--surface);padding:12px 16px;display:flex;align-items:center;gap:12px;min-width:0}
+.cfield input[type=color]{
+  inline-size:42px;block-size:34px;padding:0;flex:none;cursor:pointer;
+  border:1px solid var(--line-2);border-radius:5px;background:none
+}
+.cfield label{font-family:var(--font-m);font-size:11.5px;color:var(--ink-2);line-height:1.3;min-width:0}
+.cfield label small{display:block;color:var(--ink-3);font-size:11px;margin-top:3px;text-transform:uppercase}
+.customfoot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--line)}
+.customfoot button{
+  font-family:var(--font-m);font-size:11.5px;cursor:pointer;color:var(--ink-2);
+  background:var(--surface-2);border:1px solid var(--line-2);border-radius:999px;padding:7px 15px
+}
+.customfoot button:hover{color:var(--ink);border-color:var(--ink-3)}
+.customfoot button:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.customfoot span{font-family:var(--font-m);font-size:11.5px;color:var(--accent)}
+
 .keyhint{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-family:var(--font-m);font-size:12px;color:var(--ink-3)}
 kbd{
   font-family:var(--font-m);font-size:11px;border:1px solid var(--line-2);border-bottom-width:2px;
@@ -316,8 +346,9 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   <div class="wrap">
     <div class="sechead"><span class="secnum">01</span><h2>3D bejárás</h2></div>
     <p class="secsub">
-      Sétálj körbe a konyhában, vagy forgasd kívülről. A nézegető alatt hat front- és munkalapszín
-      kombináció közül választhatsz — a geometria mindegyiknél ugyanaz, a rajzokról vett méretekkel.
+      Sétálj körbe a konyhában, vagy forgasd kívülről. A nézegető alatt hat kész színváltozat közül
+      választhatsz, vagy megadhatod a saját színeidet elemcsoportonként — a geometria mindegyiknél
+      ugyanaz, a rajzokról vett méretekkel. A kiválasztott színösszeállítást a link viszi magával.
     </p>
 
     <div class="viewer" id="viewer">
@@ -356,6 +387,16 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
     </div>
 
     <div class="palrow" id="palrow" role="group" aria-label="Színváltozat"></div>
+
+    <details class="custom" id="custom">
+      <summary>Saját színek megadása</summary>
+      <div class="customgrid" id="customgrid"></div>
+      <div class="customfoot">
+        <button type="button" id="copylink">Link másolása ezekkel a színekkel</button>
+        <button type="button" id="resetcol">Vissza a kiválasztott változatra</button>
+        <span id="copymsg" aria-live="polite"></span>
+      </div>
+    </details>
 
     <div class="keyhint">
       <span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> vagy nyilak — mozgás (a kurzor legyen a képen)</span>
@@ -883,13 +924,19 @@ for(const [n,t,b,warn] of NOTES){
    3. 3D MODELL
    ========================================================================= */
 
+/* Minden változatban más a FELSŐ front színe is, különben a váltás nem látszik. */
 const PALETTES = {
-  sage:     {name:'Zsálya & tölgy',      base:'#6E7A66', upper:'#EFE9DE', tall:'#6E7A66', top:'#C7A87B', plinth:'#2F332E'},
-  graphite: {name:'Grafit & világos kő', base:'#3A3F44', upper:'#F1EEE8', tall:'#3A3F44', top:'#D7D3CB', plinth:'#212427'},
-  oak:      {name:'Krém & tölgy',        base:'#E4DCCE', upper:'#EFEAE1', tall:'#B78A57', top:'#4B4945', plinth:'#35322E'},
-  navy:     {name:'Tengerkék & kő',      base:'#2F3D52', upper:'#F2F0EB', tall:'#2F3D52', top:'#DEDAD2', plinth:'#1C2533'},
-  cashmere: {name:'Kasmír & dió',        base:'#C9B9A2', upper:'#EFE8DC', tall:'#C9B9A2', top:'#6B4B33', plinth:'#4A3A2C'},
-  forest:   {name:'Erdőzöld & fekete',   base:'#2F4438', upper:'#DDE1D8', tall:'#2F4438', top:'#2A2C2E', plinth:'#1A241E'}
+  sage:     {name:'Zsálya & krém',     base:'#6E7A66', upper:'#EDE7DA', tall:'#6E7A66', top:'#C7A87B', plinth:'#2F332E', carcass:'#DED8CC'},
+  graphite: {name:'Grafit & fehér',    base:'#3A3F44', upper:'#F2F0EC', tall:'#3A3F44', top:'#D7D3CB', plinth:'#212427', carcass:'#CFCCC6'},
+  oak:      {name:'Krém & tölgy',      base:'#E4DCCE', upper:'#B78A57', tall:'#B78A57', top:'#4B4945', plinth:'#35322E', carcass:'#D8CFBF'},
+  navy:     {name:'Tengerkék, egyszínű',base:'#2F3D52', upper:'#2F3D52', tall:'#2F3D52', top:'#DEDAD2', plinth:'#1C2533', carcass:'#AEB6C0'},
+  cashmere: {name:'Kasmír & dió',      base:'#C9B9A2', upper:'#C9B9A2', tall:'#7A5638', top:'#7A5638', plinth:'#4A3A2C', carcass:'#DCD3C4'},
+  forest:   {name:'Erdőzöld, egyszínű',base:'#2F4438', upper:'#2F4438', tall:'#2F4438', top:'#2A2C2E', plinth:'#1A241E', carcass:'#9FAEA4'}
+};
+const COLOR_KEYS   = ['base','upper','tall','top','plinth','carcass'];
+const COLOR_LABELS = {
+  base:'Alsó szekrény frontok', upper:'Felső szekrény frontok', tall:'Magas elemek (hűtő, sütő)',
+  top:'Munkalap és hátfal',     plinth:'Lábazat',               carcass:'Korpusz, látszó élek'
 };
 
 const canvas = document.getElementById('scene');
@@ -1085,11 +1132,18 @@ function turntable(wall,o,y,depCenter,r){
   kitchen.add(m); return m;
 }
 
-function applyPalette(key){
-  const p=PALETTES[key]; if(!p) return;
-  M.base.color.set(p.base); M.upper.color.set(p.upper); M.tall.color.set(p.tall);
-  M.top.color.set(p.top);  M.splash.color.set(p.top);   M.plinth.color.set(p.plinth);
-  M.shelf.color.set(p.base);
+/* Az aktuális színösszeállítás — előbeállításból vagy a saját színekből. */
+let current = Object.assign({}, PALETTES.sage);
+function applyColors(c){
+  Object.assign(current, c);
+  M.base.color.set(current.base);
+  M.upper.color.set(current.upper);
+  M.tall.color.set(current.tall);
+  M.top.color.set(current.top);
+  M.splash.color.set(current.top);
+  M.plinth.color.set(current.plinth);
+  M.carcass.color.set(current.carcass);
+  M.shelf.color.set(current.base);
 }
 
 /* ---- geometria-segédek ---- */
@@ -1660,7 +1714,7 @@ function buildLights(){
 }
 
 buildRoom(); buildCabinets(); buildTrim(); buildSurfaces(); buildProps(); buildLamp(); buildLights();
-applyPalette('sage');
+applyColors(PALETTES.sage);
 
 /* =========================================================================
    4. VEZÉRLÉS
@@ -1794,22 +1848,82 @@ document.querySelectorAll('[data-view]').forEach(b=>{
   });
 });
 
-/* paletta-választó a nézegető alatt */
-const palrow = document.getElementById('palrow');
-Object.entries(PALETTES).forEach(([key,p],i)=>{
+/* ---- színválasztó: előbeállítások + saját színek, a linkben megosztva ---- */
+const palrow  = document.getElementById('palrow');
+const cgrid   = document.getElementById('customgrid');
+const copyMsg = document.getElementById('copymsg');
+let lastPreset = 'sage';
+
+Object.entries(PALETTES).forEach(([key,p])=>{
   const b=document.createElement('button');
-  b.type='button'; b.className='pal';
-  b.setAttribute('aria-pressed', String(i===0));
+  b.type='button'; b.className='pal'; b.dataset.pal=key;
+  b.setAttribute('aria-pressed','false');
   b.innerHTML = '<span class="dots">'+
     `<i style="background:${p.base}"></i><i style="background:${p.upper}"></i><i style="background:${p.top}"></i>`+
     `</span><span>${esc(p.name)}</span>`;
-  b.addEventListener('click',()=>{
-    palrow.querySelectorAll('.pal').forEach(x=>x.setAttribute('aria-pressed','false'));
-    b.setAttribute('aria-pressed','true');
-    applyPalette(key);
-  });
+  b.addEventListener('click', ()=> selectPreset(key));
   palrow.appendChild(b);
 });
+
+const inputs = {};
+COLOR_KEYS.forEach(k=>{
+  const f=document.createElement('div'); f.className='cfield';
+  f.innerHTML = `<input type="color" id="c-${k}" value="${current[k]}">`+
+                `<label for="c-${k}">${esc(COLOR_LABELS[k])}<small>${current[k]}</small></label>`;
+  const inp=f.querySelector('input'), hex=f.querySelector('small');
+  inp.addEventListener('input', ()=>{
+    hex.textContent = inp.value;
+    applyColors({[k]: inp.value});
+    palrow.querySelectorAll('.pal').forEach(x=>x.setAttribute('aria-pressed','false'));
+    writeHash();
+  });
+  inputs[k] = {inp, hex};
+  cgrid.appendChild(f);
+});
+
+function syncInputs(){
+  COLOR_KEYS.forEach(k=>{
+    inputs[k].inp.value = current[k];
+    inputs[k].hex.textContent = current[k];
+  });
+}
+function selectPreset(key){
+  const p = PALETTES[key]; if(!p) return;
+  lastPreset = key;
+  applyColors(p); syncInputs();
+  palrow.querySelectorAll('.pal').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.pal===key)));
+  writeHash('p='+key);
+}
+/* a színösszeállítás belekerül a cím végébe, így a link viszi magával */
+function writeHash(s){
+  const str = s || ('c=' + COLOR_KEYS.map(k=>current[k].replace('#','')).join('-'));
+  try{ history.replaceState(null,'','#'+str); }catch(e){}
+}
+function readHash(){
+  const h = (location.hash||'').replace(/^#/,'');
+  if(h.startsWith('p=') && PALETTES[h.slice(2)]){ selectPreset(h.slice(2)); return true; }
+  if(h.startsWith('c=')){
+    const parts = h.slice(2).split('-');
+    if(parts.length===COLOR_KEYS.length && parts.every(x=>/^[0-9a-fA-F]{6}$/.test(x))){
+      const c={}; COLOR_KEYS.forEach((k,i)=> c[k]='#'+parts[i].toLowerCase());
+      applyColors(c); syncInputs();
+      palrow.querySelectorAll('.pal').forEach(x=>x.setAttribute('aria-pressed','false'));
+      document.getElementById('custom').open = true;
+      return true;
+    }
+  }
+  return false;
+}
+document.getElementById('resetcol').addEventListener('click', ()=> selectPreset(lastPreset));
+document.getElementById('copylink').addEventListener('click', ()=>{
+  const done = t => { copyMsg.textContent = t; setTimeout(()=>{ copyMsg.textContent=''; }, 2800); };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(location.href)
+      .then(()=> done('Link a vágólapon'))
+      .catch(()=> done('Nem sikerült — másold a címsorból'));
+  } else done('Másold a címsorból');
+});
+if(!readHash()) selectPreset('sage');
 
 /* teljes képernyő */
 document.getElementById('fs').addEventListener('click',()=>{
