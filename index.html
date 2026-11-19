@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="hu">
 <head>
 <meta charset="utf-8">
@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: műhelyrajz-logika — bal oldali léptékoszlop, széles rajzmező, mm-ben mindenütt. */
+/* Layout: mĹ±helyrajz-logika â€” bal oldali lĂ©ptĂ©koszlop, szĂ©les rajzmezĹ‘, mm-ben mindenĂĽtt. */
 :root{
   --paper:#ECEDE9;
   --surface:#FFFFFF;
@@ -51,8 +51,8 @@
 }
 
 *{box-sizing:border-box}
-/* A hidden attribútumnak erősebbnek kell lennie a komponensek display értékénél,
-   különben a méretcímkék nem tűnnek el és az utolsó helyükön ragadnak. */
+/* A hidden attribĂştumnak erĹ‘sebbnek kell lennie a komponensek display Ă©rtĂ©kĂ©nĂ©l,
+   kĂĽlĂ¶nben a mĂ©retcĂ­mkĂ©k nem tĹ±nnek el Ă©s az utolsĂł helyĂĽkĂ¶n ragadnak. */
 [hidden]{display:none !important}
 html,body{margin:0;padding:0}
 body{
@@ -69,7 +69,7 @@ h1,h2,h3{font-family:var(--font-d); font-weight:600; text-wrap:balance; margin:0
 p{margin:0}
 a{color:inherit}
 
-/* ---------- fejléc ---------- */
+/* ---------- fejlĂ©c ---------- */
 .topbar{
   position:sticky; top:env(safe-area-inset-top,0px); z-index:30;
   background:color-mix(in srgb, var(--paper) 88%, transparent);
@@ -100,7 +100,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .stat dd{margin:6px 0 0;font-family:var(--font-d);font-size:25px;font-weight:600;font-variant-numeric:tabular-nums}
 .stat dd small{font-size:13px;font-weight:400;color:var(--ink-3);margin-left:3px}
 
-/* ---------- szekciók ---------- */
+/* ---------- szekciĂłk ---------- */
 section{border-bottom:1px solid var(--line)}
 section .wrap{padding-block:48px}
 .sechead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:8px}
@@ -108,7 +108,7 @@ section .wrap{padding-block:48px}
 .sechead h2{font-size:clamp(23px,3.2vw,30px)}
 .secsub{color:var(--ink-2);max-width:66ch;margin-bottom:26px}
 
-/* ---------- 3D nézegető ---------- */
+/* ---------- 3D nĂ©zegetĹ‘ ---------- */
 .viewer{
   position:relative; background:var(--surface); border:1px solid var(--line-2);
   border-radius:3px; overflow:hidden; box-shadow:var(--shadow);
@@ -203,7 +203,7 @@ section .wrap{padding-block:48px}
 }
 .custom summary::-webkit-details-marker{display:none}
 .custom summary::before{content:"+";color:var(--mark);font-size:14px;line-height:1}
-.custom[open] summary::before{content:"–"}
+.custom[open] summary::before{content:"â€“"}
 .custom summary:hover{color:var(--ink)}
 .custom summary:focus-visible{outline:2px solid var(--mark);outline-offset:-2px}
 .customgrid{
@@ -243,7 +243,9 @@ kbd{
 .tab:focus-visible{outline:2px solid var(--mark);outline-offset:-2px}
 .sheet{background:var(--surface);border:1px solid var(--line-2);box-shadow:var(--shadow);padding:10px}
 .sheetscroll{overflow-x:auto}
-.sheet svg{display:block;width:100%;height:auto;min-width:560px}
+/* A szĂ©lessĂ©get a showSheet ĂˇllĂ­tja be a rajz valĂłdi mĂ©retĂ©vel arĂˇnyosan,
+   Ă­gy minden nĂ©zetrajz azonos lĂ©ptĂ©kben jelenik meg. */
+.sheet svg{display:block;height:auto;margin-inline:auto}
 .sheetcap{display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between;align-items:baseline;padding:12px 6px 4px;border-top:1px solid var(--line);margin-top:8px}
 .sheetcap b{font-family:var(--font-d);font-weight:600;font-size:14px}
 .sheetcap span{font-family:var(--font-m);font-size:11.5px;color:var(--ink-3)}
@@ -266,7 +268,7 @@ kbd{
 .dw-tag{fill:var(--ink);font-family:var(--font-d);font-weight:600;font-size:66px}
 .dw-floor{stroke:var(--ink);stroke-width:7}
 
-/* ---------- táblázat ---------- */
+/* ---------- tĂˇblĂˇzat ---------- */
 .tablewrap{overflow-x:auto;border:1px solid var(--line-2);background:var(--surface);box-shadow:var(--shadow)}
 table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px}
 th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line)}
@@ -279,7 +281,7 @@ td.num{font-family:var(--font-m);font-variant-numeric:tabular-nums;white-space:n
 td.code{font-family:var(--font-m);font-size:12.5px;color:var(--mark);white-space:nowrap}
 .wallrow td{background:var(--surface-2);font-family:var(--font-d);font-weight:600;font-size:13px;letter-spacing:.02em}
 
-/* ---------- kártyák ---------- */
+/* ---------- kĂˇrtyĂˇk ---------- */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
 .card{background:var(--surface);padding:20px}
 .card h3{font-size:15px;margin-bottom:6px}
@@ -310,12 +312,12 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
 
 <div class="topbar">
   <div class="wrap">
-    <div class="brand">Konyhaterv <span>U‑alak · 3260×2730</span></div>
+    <div class="brand">Konyhaterv <span>Uâ€‘alak Â· 3260Ă—2730</span></div>
     <nav class="topnav">
-      <a href="#bejaras">3D bejárás</a>
-      <a href="#rajzok">Nézetrajzok</a>
+      <a href="#bejaras">3D bejĂˇrĂˇs</a>
+      <a href="#rajzok">NĂ©zetrajzok</a>
       <a href="#elemek">Elemlista</a>
-      <a href="#gepek">Gépek</a>
+      <a href="#gepek">GĂ©pek</a>
       <a href="#jegyzet">Jegyzetek</a>
     </nav>
   </div>
@@ -323,19 +325,19 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow">Kiviteli látványterv · minden méret mm-ben</p>
-    <h1>U‑alakú konyha az ablakos falra<em>3260 × 2730 mm alapterület · 2530 mm belmagasság</em></h1>
+    <p class="eyebrow">Kiviteli lĂˇtvĂˇnyterv Â· minden mĂ©ret mm-ben</p>
+    <h1>Uâ€‘alakĂş konyha az ablakos falra<em>3260 Ă— 2730 mm alapterĂĽlet Â· 2530 mm belmagassĂˇg</em></h1>
     <p class="lead">
-      A három kézi vázlat (1 – bal fal, 2 – ablakos fal, 3 – jobb fal) és a helyszíni fotó méretei alapján
-      felépített terv. A mosogató az ablak alatt középen, a főzőlap a jobb falon a fiókos elem fölött,
-      a hűtő és a sütős magas elem a két szélen. Lent a modell bejárható.
+      A hĂˇrom kĂ©zi vĂˇzlat (1 â€“ bal fal, 2 â€“ ablakos fal, 3 â€“ jobb fal) Ă©s a helyszĂ­ni fotĂł mĂ©retei alapjĂˇn
+      felĂ©pĂ­tett terv. A mosogatĂł az ablak alatt kĂ¶zĂ©pen, a fĹ‘zĹ‘lap a jobb falon a fiĂłkos elem fĂ¶lĂ¶tt,
+      a hĹ±tĹ‘ Ă©s a sĂĽtĹ‘s magas elem a kĂ©t szĂ©len. Lent a modell bejĂˇrhatĂł.
     </p>
     <dl class="stats">
       <div class="stat"><dt>Ablakos fal</dt><dd>3260<small>mm</small></dd></div>
       <div class="stat"><dt>Bal fal</dt><dd>1500<small>mm</small></dd></div>
       <div class="stat"><dt>Jobb fal</dt><dd>2730<small>mm</small></dd></div>
-      <div class="stat"><dt>Munkalap magasság</dt><dd>900<small>mm</small></dd></div>
-      <div class="stat"><dt>Elemek száma</dt><dd id="stat-count">–</dd></div>
+      <div class="stat"><dt>Munkalap magassĂˇg</dt><dd>900<small>mm</small></dd></div>
+      <div class="stat"><dt>Elemek szĂˇma</dt><dd id="stat-count">â€“</dd></div>
     </dl>
   </div>
 </header>
@@ -344,11 +346,11 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
 
 <section id="bejaras">
   <div class="wrap">
-    <div class="sechead"><span class="secnum">01</span><h2>3D bejárás</h2></div>
+    <div class="sechead"><span class="secnum">01</span><h2>3D bejĂˇrĂˇs</h2></div>
     <p class="secsub">
-      Sétálj körbe a konyhában, vagy forgasd kívülről. A nézegető alatt hat kész színváltozat közül
-      választhatsz, vagy megadhatod a saját színeidet elemcsoportonként — a geometria mindegyiknél
-      ugyanaz, a rajzokról vett méretekkel. A kiválasztott színösszeállítást a link viszi magával.
+      SĂ©tĂˇlj kĂ¶rbe a konyhĂˇban, vagy forgasd kĂ­vĂĽlrĹ‘l. A nĂ©zegetĹ‘ alatt hat kĂ©sz szĂ­nvĂˇltozat kĂ¶zĂĽl
+      vĂˇlaszthatsz, vagy megadhatod a sajĂˇt szĂ­neidet elemcsoportonkĂ©nt â€” a geometria mindegyiknĂ©l
+      ugyanaz, a rajzokrĂłl vett mĂ©retekkel. A kivĂˇlasztott szĂ­nĂ¶sszeĂˇllĂ­tĂˇst a link viszi magĂˇval.
     </p>
 
     <div class="viewer" id="viewer">
@@ -356,69 +358,69 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
       <div class="annots" id="annots"></div>
       <div class="hud">
         <div class="hudrow">
-          <div class="chipset" role="group" aria-label="Nézet módja">
-            <button class="chip on" id="m-walk" type="button">Séta</button>
-            <button class="chip" id="m-orbit" type="button">Forgatás</button>
+          <div class="chipset" role="group" aria-label="NĂ©zet mĂłdja">
+            <button class="chip on" id="m-walk" type="button">SĂ©ta</button>
+            <button class="chip" id="m-orbit" type="button">ForgatĂˇs</button>
           </div>
           <label class="toggle" for="annots-on">
-            <input type="checkbox" id="annots-on"> Méretcímkék
+            <input type="checkbox" id="annots-on"> MĂ©retcĂ­mkĂ©k
           </label>
           <label class="toggle" for="xhair-on">
-            <input type="checkbox" id="xhair-on" checked> Célkereszt
+            <input type="checkbox" id="xhair-on" checked> CĂ©lkereszt
           </label>
         </div>
         <div class="hudrow">
-          <div class="chipset" role="group" aria-label="Nézőpontok">
-            <button class="chip" data-view="door" type="button">Áttekintés</button>
-            <button class="chip" data-view="sink" type="button">Mosogató</button>
-            <button class="chip" data-view="hob" type="button">Főzőhely</button>
-            <button class="chip" data-view="fridge" type="button">Hűtő</button>
-            <button class="chip" data-view="top" type="button">Madártávlat</button>
+          <div class="chipset" role="group" aria-label="NĂ©zĹ‘pontok">
+            <button class="chip" data-view="door" type="button">ĂttekintĂ©s</button>
+            <button class="chip" data-view="sink" type="button">MosogatĂł</button>
+            <button class="chip" data-view="hob" type="button">FĹ‘zĹ‘hely</button>
+            <button class="chip" data-view="fridge" type="button">HĹ±tĹ‘</button>
+            <button class="chip" data-view="top" type="button">MadĂˇrtĂˇvlat</button>
           </div>
-          <button class="chip hudright" id="fs" type="button" style="border:1px solid var(--line-2);border-radius:999px">Teljes képernyő</button>
+          <button class="chip hudright" id="fs" type="button" style="border:1px solid var(--line-2);border-radius:999px">Teljes kĂ©pernyĹ‘</button>
         </div>
       </div>
       <div class="crosshair"></div>
       <div class="touchhint" id="touchhint" hidden>
-        <b>Érintésvezérlés</b>
-        bal fél csúsztatás: mozgás · jobb fél: nézelődés
+        <b>Ă‰rintĂ©svezĂ©rlĂ©s</b>
+        bal fĂ©l csĂşsztatĂˇs: mozgĂˇs Â· jobb fĂ©l: nĂ©zelĹ‘dĂ©s
       </div>
-      <div class="loading" id="loading"><div>Modell betöltése…</div></div>
+      <div class="loading" id="loading"><div>Modell betĂ¶ltĂ©seâ€¦</div></div>
     </div>
 
-    <div class="palrow" id="palrow" role="group" aria-label="Színváltozat"></div>
+    <div class="palrow" id="palrow" role="group" aria-label="SzĂ­nvĂˇltozat"></div>
 
     <details class="custom" id="custom">
-      <summary>Saját színek megadása</summary>
+      <summary>SajĂˇt szĂ­nek megadĂˇsa</summary>
       <div class="customgrid" id="customgrid"></div>
       <div class="customfoot">
-        <button type="button" id="copylink">Link másolása ezekkel a színekkel</button>
-        <button type="button" id="resetcol">Vissza a kiválasztott változatra</button>
+        <button type="button" id="copylink">Link mĂˇsolĂˇsa ezekkel a szĂ­nekkel</button>
+        <button type="button" id="resetcol">Vissza a kivĂˇlasztott vĂˇltozatra</button>
         <span id="copymsg" aria-live="polite"></span>
       </div>
     </details>
 
     <div class="keyhint">
-      <span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> vagy nyilak — mozgás (a kurzor legyen a képen)</span>
-      <span>Egér lenyomva húzás — körbenézés</span>
-      <span><kbd>Shift</kbd> — gyorsabb</span>
-      <span>Mobilon: bal fél csúsztatás = mozgás, jobb fél = nézelődés</span>
-      <span>Méretcímkék — a megcélzott elem nevét és tervrajzi méretét írja ki</span>
+      <span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> vagy nyilak â€” mozgĂˇs (a kurzor legyen a kĂ©pen)</span>
+      <span>EgĂ©r lenyomva hĂşzĂˇs â€” kĂ¶rbenĂ©zĂ©s</span>
+      <span><kbd>Shift</kbd> â€” gyorsabb</span>
+      <span>Mobilon: bal fĂ©l csĂşsztatĂˇs = mozgĂˇs, jobb fĂ©l = nĂ©zelĹ‘dĂ©s</span>
+      <span>MĂ©retcĂ­mkĂ©k â€” a megcĂ©lzott elem nevĂ©t Ă©s tervrajzi mĂ©retĂ©t Ă­rja ki</span>
     </div>
   </div>
 </section>
 
 <section id="rajzok">
   <div class="wrap">
-    <div class="sechead"><span class="secnum">02</span><h2>Nézetrajzok és alaprajz</h2></div>
+    <div class="sechead"><span class="secnum">02</span><h2>NĂ©zetrajzok Ă©s alaprajz</h2></div>
     <p class="secsub">
-      Méretarányos tisztázat a kézi vázlatokról. A kék méretvonalak mm-ben értendők, a sraffozott mezők
-      a sarkok vakfelületei (ott a szomszéd fal eleme takar).
+      MĂ©retarĂˇnyos tisztĂˇzat a kĂ©zi vĂˇzlatokrĂłl. A kĂ©k mĂ©retvonalak mm-ben Ă©rtendĹ‘k, a sraffozott mezĹ‘k
+      a sarkok vakfelĂĽletei (ott a szomszĂ©d fal eleme takar).
     </p>
     <div class="tabs" id="tabs" role="tablist"></div>
     <div class="sheet">
       <div class="sheetscroll" id="sheet"></div>
-      <div class="sheetcap"><b id="sheet-title">–</b><span id="sheet-note">–</span></div>
+      <div class="sheetcap"><b id="sheet-title">â€“</b><span id="sheet-note">â€“</span></div>
     </div>
   </div>
 </section>
@@ -427,12 +429,12 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   <div class="wrap">
     <div class="sechead"><span class="secnum">03</span><h2>Elemlista</h2></div>
     <p class="secsub">
-      Korpuszméretek. Alsó elemek 600 mm mélyek, felsők 350 mm, magas elemek 600 mm (hűtőnél 600–620).
-      A lábazat 100 mm, a munkalap 40 mm vastag.
+      KorpuszmĂ©retek. AlsĂł elemek 600 mm mĂ©lyek, felsĹ‘k 350 mm, magas elemek 600 mm (hĹ±tĹ‘nĂ©l 600â€“620).
+      A lĂˇbazat 100 mm, a munkalap 40 mm vastag.
     </p>
     <div class="tablewrap">
       <table>
-        <thead><tr><th>Jel</th><th>Megnevezés</th><th>Szél.</th><th>Mag.</th><th>Mély.</th><th>Megjegyzés</th></tr></thead>
+        <thead><tr><th>Jel</th><th>MegnevezĂ©s</th><th>SzĂ©l.</th><th>Mag.</th><th>MĂ©ly.</th><th>MegjegyzĂ©s</th></tr></thead>
         <tbody id="schedule"></tbody>
       </table>
     </div>
@@ -441,16 +443,16 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
 
 <section id="gepek">
   <div class="wrap">
-    <div class="sechead"><span class="secnum">04</span><h2>Beépített gépek és világítás</h2></div>
-    <p class="secsub">A vázlatokon jelölt gépek helye és a hozzájuk tartozó beépítési szélesség.</p>
+    <div class="sechead"><span class="secnum">04</span><h2>BeĂ©pĂ­tett gĂ©pek Ă©s vilĂˇgĂ­tĂˇs</h2></div>
+    <p class="secsub">A vĂˇzlatokon jelĂ¶lt gĂ©pek helye Ă©s a hozzĂˇjuk tartozĂł beĂ©pĂ­tĂ©si szĂ©lessĂ©g.</p>
     <div class="cards" id="appliances"></div>
   </div>
 </section>
 
 <section id="jegyzet">
   <div class="wrap">
-    <div class="sechead"><span class="secnum">05</span><h2>Jegyzetek és egyeztetendők</h2></div>
-    <p class="secsub">Amit a rajzokból levezettem, és ami még döntést kíván.</p>
+    <div class="sechead"><span class="secnum">05</span><h2>Jegyzetek Ă©s egyeztetendĹ‘k</h2></div>
+    <p class="secsub">Amit a rajzokbĂłl levezettem, Ă©s ami mĂ©g dĂ¶ntĂ©st kĂ­vĂˇn.</p>
     <div class="notes" id="notes"></div>
   </div>
 </section>
@@ -459,9 +461,9 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
 
 <footer>
   <div class="wrap">
-    <span>Konyhaterv · a 3 kézi vázlat és a helyszíni felmérés alapján</span>
-    <span>Minden méret mm-ben, kész falfelülettől mérve</span>
-    <span>Verzió: 2026-11-19b · 6 színváltozat + saját színek</span>
+    <span>Konyhaterv Â· a 3 kĂ©zi vĂˇzlat Ă©s a helyszĂ­ni felmĂ©rĂ©s alapjĂˇn</span>
+    <span>Minden mĂ©ret mm-ben, kĂ©sz falfelĂĽlettĹ‘l mĂ©rve</span>
+    <span>VerziĂł: 2026-11-19c Â· 6 szĂ­nvĂˇltozat + sajĂˇt szĂ­nek</span>
   </div>
 </footer>
 
@@ -469,9 +471,9 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
 setTimeout(function(){
   var el=document.getElementById('loading');
   if(el && !el.classList.contains('hide')){
-    el.innerHTML='<div><strong>A 3D modell nem tudott betölteni.</strong><br><br>'+
-      'A bejáráshoz internetkapcsolat kell, mert a 3D könyvtárat CDN-ről tölti be.<br>'+
-      'A nézetrajzok és az elemlista internet nélkül is működnek.</div>';
+    el.innerHTML='<div><strong>A 3D modell nem tudott betĂ¶lteni.</strong><br><br>'+
+      'A bejĂˇrĂˇshoz internetkapcsolat kell, mert a 3D kĂ¶nyvtĂˇrat CDN-rĹ‘l tĂ¶lti be.<br>'+
+      'A nĂ©zetrajzok Ă©s az elemlista internet nĂ©lkĂĽl is mĹ±kĂ¶dnek.</div>';
   }
 }, 9000);
 </script>
@@ -490,132 +492,132 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
 /* =========================================================================
-   1. ADATMODELL — minden méret mm-ben, a vázlatokról
+   1. ADATMODELL â€” minden mĂ©ret mm-ben, a vĂˇzlatokrĂłl
    ========================================================================= */
 
 const RW = 3260;          // ablakos fal hossza (X)
-const RD = 2730;          // jobb fal hossza / helyiség mélység (Z)
-const RH = 2530;          // belmagasság
+const RD = 2730;          // jobb fal hossza / helyisĂ©g mĂ©lysĂ©g (Z)
+const RH = 2530;          // belmagassĂˇg
 const LEFTLEN = 1500;     // bal fal hossza
 
 const Y = {
-  plinth:  100,   // lábazat teteje
-  carcass: 860,   // alsó korpusz teteje
+  plinth:  100,   // lĂˇbazat teteje
+  carcass: 860,   // alsĂł korpusz teteje
   top:     900,   // munkalap teteje
-  upperBot:1500,  // felsők alja  (900 + 600 hátfal)
-  upperTop:2430,  // felsők teteje (+930)
-  ceil:    2530   // + 100 koronaléc
+  upperBot:1500,  // felsĹ‘k alja  (900 + 600 hĂˇtfal)
+  upperTop:2430,  // felsĹ‘k teteje (+930)
+  ceil:    2530   // + 100 koronalĂ©c
 };
 const DEP = { base:600, upper:350, tall:600 };
 const WIN = { o:1340, w:1180, sill:1050, h:900 };   // ablak az ablakos falon
 const WINTOP = WIN.sill + WIN.h;                     // 1950
 
-/* Falanként az elemek. o = eltolás a fal kezdetétől, w = szélesség. */
+/* FalankĂ©nt az elemek. o = eltolĂˇs a fal kezdetĂ©tĹ‘l, w = szĂ©lessĂ©g. */
 const WALLS = {
-  A:{ id:'A', tag:'1', name:'Bal fal · hűtő', len:LEFTLEN, flip:true,
-      note:'Nézet a helyiség felől; jobbra az ablakos fal sarka.',
+  A:{ id:'A', tag:'1', name:'Bal fal Â· hĹ±tĹ‘', len:LEFTLEN, flip:true,
+      note:'NĂ©zet a helyisĂ©g felĹ‘l; jobbra az ablakos fal sarka.',
       units:[
-        {o:0,   w:600, kind:'cornerVoid', label:'Sarok', sub:'a 2. falról nyílik'},
-        {o:600, w:300, kind:'baseDoor',   label:'Alsó szekrény 300'},
-        {o:900, w:600, kind:'tallFridge', label:'Hűtő magas elem'},
-        {o:0,   w:600, kind:'upperReturn',label:'Sarok felső', sub:'a 2. falról nyílik'},
-        {o:600, w:300, kind:'upper',      label:'Felső szekrény 300'}
+        {o:0,   w:600, kind:'cornerVoid', label:'Sarok', sub:'a 2. falrĂłl nyĂ­lik'},
+        {o:600, w:300, kind:'baseDoor',   label:'AlsĂł szekrĂ©ny 300'},
+        {o:900, w:600, kind:'tallFridge', label:'HĹ±tĹ‘ magas elem'},
+        {o:0,   w:600, kind:'upperReturn',label:'Sarok felsĹ‘', sub:'a 2. falrĂłl nyĂ­lik'},
+        {o:600, w:300, kind:'upper',      label:'FelsĹ‘ szekrĂ©ny 300'}
       ]},
-  B:{ id:'B', tag:'2', name:'Ablakos fal · mosogató', len:RW, flip:false,
-      note:'Mosogató az ablak tengelyében; felette felnyitható ajtós felső.',
+  B:{ id:'B', tag:'2', name:'Ablakos fal Â· mosogatĂł', len:RW, flip:false,
+      note:'MosogatĂł az ablak tengelyĂ©ben; felette felnyithatĂł ajtĂłs felsĹ‘.',
       units:[
-        {o:0,    w:1030, kind:'baseCorner', blind:430, blindSide:'left',  label:'Sarok alsó szekrény', sub:'600 ajtó'},
-        {o:1030, w:600,  kind:'dishwasher', label:'Mosogatógép', sub:'integrált front'},
-        {o:1630, w:600,  kind:'baseSink',   label:'Mosogató alsó'},
-        {o:2230, w:1030, kind:'baseCorner', blind:430, blindSide:'right', label:'Sarok alsó szekrény', sub:'600 ajtó'},
+        {o:0,    w:1030, kind:'baseCorner', blind:430, blindSide:'left',  label:'Sarok alsĂł szekrĂ©ny', sub:'600 ajtĂł'},
+        {o:1030, w:600,  kind:'dishwasher', label:'MosogatĂłgĂ©p', sub:'integrĂˇlt front'},
+        {o:1630, w:600,  kind:'baseSink',   label:'MosogatĂł alsĂł'},
+        {o:2230, w:1030, kind:'baseCorner', blind:430, blindSide:'right', label:'Sarok alsĂł szekrĂ©ny', sub:'600 ajtĂł'},
 
-        {o:0,    w:600,  kind:'upperCorner', label:'Sarok felső'},
-        {o:600,  w:430,  kind:'upper',       label:'Felső 430'},
-        {o:1030, w:310,  kind:'upper',       label:'Felső 310'},
-        {o:1340, w:1180, kind:'upperLift',   label:'Felnyitható ajtós felső'},
-        {o:2520, w:740,  kind:'upperCorner', label:'Sarok felső'}
+        {o:0,    w:600,  kind:'upperCorner', label:'Sarok felsĹ‘'},
+        {o:600,  w:430,  kind:'upper',       label:'FelsĹ‘ 430'},
+        {o:1030, w:310,  kind:'upper',       label:'FelsĹ‘ 310'},
+        {o:1340, w:1180, kind:'upperLift',   label:'FelnyithatĂł ajtĂłs felsĹ‘'},
+        {o:2520, w:740,  kind:'upperCorner', label:'Sarok felsĹ‘'}
       ]},
-  C:{ id:'C', tag:'3', name:'Jobb fal · főzőlap, sütő', len:RD, flip:false,
-      note:'Balról az ablakos fal sarka; a sor végén 230 mm szabad fal marad.',
+  C:{ id:'C', tag:'3', name:'Jobb fal Â· fĹ‘zĹ‘lap, sĂĽtĹ‘', len:RD, flip:false,
+      note:'BalrĂłl az ablakos fal sarka; a sor vĂ©gĂ©n 230 mm szabad fal marad.',
       units:[
-        {o:0,    w:600, kind:'cornerVoid',  label:'Sarok', sub:'a 2. falról nyílik'},
-        {o:600,  w:600, kind:'baseDrawers', label:'Fiókos alsó', sub:'főzőlap fölötte'},
-        {o:1200, w:100, kind:'filler',      label:'Takaróléc'},
-        {o:1300, w:600, kind:'baseDoor', drawerTop:true, label:'Alsó szekrény', sub:'1 fiók + ajtó'},
-        {o:1900, w:600, kind:'tallOven',    label:'Magas elem', sub:'sütő + mikró'},
+        {o:0,    w:600, kind:'cornerVoid',  label:'Sarok', sub:'a 2. falrĂłl nyĂ­lik'},
+        {o:600,  w:600, kind:'baseDrawers', label:'FiĂłkos alsĂł', sub:'fĹ‘zĹ‘lap fĂ¶lĂ¶tte'},
+        {o:1200, w:100, kind:'filler',      label:'TakarĂłlĂ©c'},
+        {o:1300, w:600, kind:'baseDoor', drawerTop:true, label:'AlsĂł szekrĂ©ny', sub:'1 fiĂłk + ajtĂł'},
+        {o:1900, w:600, kind:'tallOven',    label:'Magas elem', sub:'sĂĽtĹ‘ + mikrĂł'},
         {o:2500, w:230, kind:'free',        label:'Szabad fal'},
 
-        {o:0,    w:600, kind:'upperReturn', label:'Sarok felső', sub:'a 2. falról nyílik'},
-        {o:600,  w:600, kind:'upperHood',   label:'Felső + páraelszívó'},
-        {o:1200, w:600, kind:'upper',       label:'Felső 600'},
-        {o:1800, w:100, kind:'upperFiller', label:'Takaróléc', sub:'a magas elemig, hogy ne maradjon rés'}
+        {o:0,    w:600, kind:'upperReturn', label:'Sarok felsĹ‘', sub:'a 2. falrĂłl nyĂ­lik'},
+        {o:600,  w:600, kind:'upperHood',   label:'FelsĹ‘ + pĂˇraelszĂ­vĂł'},
+        {o:1200, w:600, kind:'upper',       label:'FelsĹ‘ 600'},
+        {o:1800, w:100, kind:'upperFiller', label:'TakarĂłlĂ©c', sub:'a magas elemig, hogy ne maradjon rĂ©s'}
       ]}
 };
 
 const SCHEDULE = [
-  ['A','1 · Bal fal'],
-  ['A1','Sarokzóna (a 2. fal eleme tölti ki)', 600, 900, 600, 'Alsó szinten vakfelület'],
-  ['A2','Alsó szekrény, ajtós', 300, 760, 600, 'Munkalap fut fölötte, a sarokból kifordulva'],
-  ['A3','Felső szekrény polcokkal', 300, 930, 350, 'Az A2 fölött, 1500-tól 2430-ig'],
-  ['A4','Hűtő magas elem, beépített hűtőhöz', 600, 2430, '600–620', 'Hűtőajtó kb. 1780, fölötte szekrény'],
-  ['B','2 · Ablakos fal'],
-  ['B1','Sarok alsó szekrény', 1030, 760, 600, '600 ajtó + 430 vak visszatérés'],
-  ['B2','Mosogatógép, integrált front', 600, 820, 570, 'Bújtatott front'],
-  ['B3','Mosogató alsó szekrény', 600, 760, 600, 'Ablak tengelyében'],
-  ['B4','Sarok alsó szekrény', 1030, 760, 600, '600 ajtó + 430 vak visszatérés'],
-  ['B5','Sarok felső szekrény', 600, 930, 350, ''],
-  ['B6','Felső szekrény', 430, 930, 350, ''],
-  ['B7','Felső szekrény', 310, 930, 350, 'Ablak széléig'],
-  ['B8','Felnyitható ajtós felső az ablak fölött', 1180, 480, 350, 'Alja 1950, teteje 2430'],
-  ['B9','Sarok felső szekrény', 740, 930, 350, '2 ajtó, a jobb fal sarka innen nyílik'],
-  ['C','3 · Jobb fal'],
-  ['C1','Sarokzóna (a 2. fal eleme tölti ki)', 600, 900, 600, 'Alsó szinten vakfelület'],
-  ['C2','Fiókos alsó elem', 600, 760, 600, '3 fiók: 140 / 300 / 320, főzőlap fölötte'],
-  ['C3','Takaróléc', 100, 760, 600, 'A magas elem előtti igazítás'],
-  ['C4','Alsó szekrény', 600, 760, 600, 'Felül 180-as fiók, alatta ajtó'],
-  ['C5','Magas elem sütőnek és mikrónak', 600, 2430, 600, 'Alul 2 fiók, sütő 460–1055, mikró 1060–1515'],
-  ['C6','Sarok felső szekrény', 600, 930, 350, 'A 2. fal 740-es eleméről nyílik, itt 250 visszatérés'],
-  ['C7','Felső szekrény beépített páraelszívóval', 600, 930, 350, '2 ajtó, főzőlap fölött'],
-  ['C8','Felső szekrény', 600, 930, 350, '2 ajtó'],
-  ['C9','Takaróléc a felsők és a magas elem között', 100, 930, 350, 'Az alsó 100-as léc miatti eltolás kizárása']
+  ['A','1 Â· Bal fal'],
+  ['A1','SarokzĂłna (a 2. fal eleme tĂ¶lti ki)', 600, 900, 600, 'AlsĂł szinten vakfelĂĽlet'],
+  ['A2','AlsĂł szekrĂ©ny, ajtĂłs', 300, 760, 600, 'Munkalap fut fĂ¶lĂ¶tte, a sarokbĂłl kifordulva'],
+  ['A3','FelsĹ‘ szekrĂ©ny polcokkal', 300, 930, 350, 'Az A2 fĂ¶lĂ¶tt, 1500-tĂłl 2430-ig'],
+  ['A4','HĹ±tĹ‘ magas elem, beĂ©pĂ­tett hĹ±tĹ‘hĂ¶z', 600, 2430, '600â€“620', 'HĹ±tĹ‘ajtĂł kb. 1780, fĂ¶lĂ¶tte szekrĂ©ny'],
+  ['B','2 Â· Ablakos fal'],
+  ['B1','Sarok alsĂł szekrĂ©ny', 1030, 760, 600, '600 ajtĂł + 430 vak visszatĂ©rĂ©s'],
+  ['B2','MosogatĂłgĂ©p, integrĂˇlt front', 600, 820, 570, 'BĂşjtatott front'],
+  ['B3','MosogatĂł alsĂł szekrĂ©ny', 600, 760, 600, 'Ablak tengelyĂ©ben'],
+  ['B4','Sarok alsĂł szekrĂ©ny', 1030, 760, 600, '600 ajtĂł + 430 vak visszatĂ©rĂ©s'],
+  ['B5','Sarok felsĹ‘ szekrĂ©ny', 600, 930, 350, ''],
+  ['B6','FelsĹ‘ szekrĂ©ny', 430, 930, 350, ''],
+  ['B7','FelsĹ‘ szekrĂ©ny', 310, 930, 350, 'Ablak szĂ©lĂ©ig'],
+  ['B8','FelnyithatĂł ajtĂłs felsĹ‘ az ablak fĂ¶lĂ¶tt', 1180, 480, 350, 'Alja 1950, teteje 2430'],
+  ['B9','Sarok felsĹ‘ szekrĂ©ny', 740, 930, 350, '2 ajtĂł, a jobb fal sarka innen nyĂ­lik'],
+  ['C','3 Â· Jobb fal'],
+  ['C1','SarokzĂłna (a 2. fal eleme tĂ¶lti ki)', 600, 900, 600, 'AlsĂł szinten vakfelĂĽlet'],
+  ['C2','FiĂłkos alsĂł elem', 600, 760, 600, '3 fiĂłk: 140 / 300 / 320, fĹ‘zĹ‘lap fĂ¶lĂ¶tte'],
+  ['C3','TakarĂłlĂ©c', 100, 760, 600, 'A magas elem elĹ‘tti igazĂ­tĂˇs'],
+  ['C4','AlsĂł szekrĂ©ny', 600, 760, 600, 'FelĂĽl 180-as fiĂłk, alatta ajtĂł'],
+  ['C5','Magas elem sĂĽtĹ‘nek Ă©s mikrĂłnak', 600, 2430, 600, 'Alul 2 fiĂłk, sĂĽtĹ‘ 460â€“1055, mikrĂł 1060â€“1515'],
+  ['C6','Sarok felsĹ‘ szekrĂ©ny', 600, 930, 350, 'A 2. fal 740-es elemĂ©rĹ‘l nyĂ­lik, itt 250 visszatĂ©rĂ©s'],
+  ['C7','FelsĹ‘ szekrĂ©ny beĂ©pĂ­tett pĂˇraelszĂ­vĂłval', 600, 930, 350, '2 ajtĂł, fĹ‘zĹ‘lap fĂ¶lĂ¶tt'],
+  ['C8','FelsĹ‘ szekrĂ©ny', 600, 930, 350, '2 ajtĂł'],
+  ['C9','TakarĂłlĂ©c a felsĹ‘k Ă©s a magas elem kĂ¶zĂ¶tt', 100, 930, 350, 'Az alsĂł 100-as lĂ©c miatti eltolĂˇs kizĂˇrĂˇsa']
 ];
 
 const APPLIANCES = [
-  ['Bal fal', 'Beépített hűtőszekrény', 'Teljes magasságú elembe bújtatva, a bejárat felőli végen.', '600 mm széles · 2430 mm magas korpusz'],
-  ['Ablakos fal', 'Mosogatógép', 'Bújtatott front, felül keskeny inox kezelősávval, a mosogató mellett.', '600 mm beépítési szélesség'],
-  ['Ablakos fal', 'Mosogató és csaptelep', 'Az ablak tengelyében, 1630–2230 között.', '600 mm-es alsó elem'],
-  ['Jobb fal', 'Főzőlap', 'A fiókos elem fölött, 600–1200 közötti szakaszon.', '600 mm-es elem · kb. 580×500 vágat'],
-  ['Jobb fal', 'Páraelszívó', 'A főzőlap fölötti felső szekrénybe építve.', '600 mm széles felső'],
-  ['Jobb fal', 'Sütő és mikró', 'Egymás fölött a magas elemben, kényelmes kezelési magasságban.', 'Sütő 460–1055, mikró 1060–1515'],
-  ['Mindhárom fal', 'LED munkalap-világítás', 'A felső szekrények alján végigfutó szalag.', '1500 mm padlótól mérve']
+  ['Bal fal', 'BeĂ©pĂ­tett hĹ±tĹ‘szekrĂ©ny', 'Teljes magassĂˇgĂş elembe bĂşjtatva, a bejĂˇrat felĹ‘li vĂ©gen.', '600 mm szĂ©les Â· 2430 mm magas korpusz'],
+  ['Ablakos fal', 'MosogatĂłgĂ©p', 'BĂşjtatott front, felĂĽl keskeny inox kezelĹ‘sĂˇvval, a mosogatĂł mellett.', '600 mm beĂ©pĂ­tĂ©si szĂ©lessĂ©g'],
+  ['Ablakos fal', 'MosogatĂł Ă©s csaptelep', 'Az ablak tengelyĂ©ben, 1630â€“2230 kĂ¶zĂ¶tt.', '600 mm-es alsĂł elem'],
+  ['Jobb fal', 'FĹ‘zĹ‘lap', 'A fiĂłkos elem fĂ¶lĂ¶tt, 600â€“1200 kĂ¶zĂ¶tti szakaszon.', '600 mm-es elem Â· kb. 580Ă—500 vĂˇgat'],
+  ['Jobb fal', 'PĂˇraelszĂ­vĂł', 'A fĹ‘zĹ‘lap fĂ¶lĂ¶tti felsĹ‘ szekrĂ©nybe Ă©pĂ­tve.', '600 mm szĂ©les felsĹ‘'],
+  ['Jobb fal', 'SĂĽtĹ‘ Ă©s mikrĂł', 'EgymĂˇs fĂ¶lĂ¶tt a magas elemben, kĂ©nyelmes kezelĂ©si magassĂˇgban.', 'SĂĽtĹ‘ 460â€“1055, mikrĂł 1060â€“1515'],
+  ['MindhĂˇrom fal', 'LED munkalap-vilĂˇgĂ­tĂˇs', 'A felsĹ‘ szekrĂ©nyek aljĂˇn vĂ©gigfutĂł szalag.', '1500 mm padlĂłtĂłl mĂ©rve']
 ];
 
 const NOTES = [
   ['01','A jobb falon 230 mm szabad hely marad.',
-   'A vázlat szerinti sor 600 + 600 + 100 + 600 + 600 = 2500 mm, a felmért fal viszont 2730 mm. A különbséget a modell a sor végén, a magas elem mellett hagyja szabadon. Eldöntendő: szélesebb takaróléc, egy 230-as kihúzható fűszertartó, vagy a magas elem a fal végéhez tolva.', true],
-  ['02','A magassági osztás 100 + 900 + 600 + 930 = 2530.',
-   'Lábazat 100, alsó korpusz 760, munkalap 40 — így a munkalap teteje 900. Hátfal (munkalap és felső közötti rés) 600, felső szekrény 930, legfelül 100 mm koronaléc a mennyezetig.', false],
-  ['03','Az ablak méretei a fotóból jönnek.',
-   'Bal oldalt 1340 mm, az ablak 1180 mm, jobbra 740 mm — ez pontosan kiadja a 3260-at, és egybevág a fotón jelölt 134 / 74 cm-rel. A könyöklő magasságát 1050 mm-rel vettem fel, az ablak felső éle 1950; ezt érdemes a helyszínen leellenőrizni, mert a felnyitható felső magassága ettől függ.', true],
-  ['04','A két alsó sarok vakfelülettel oldódik meg.',
-   'Mindkét sarkot az ablakos fal 1030 mm-es eleme viszi, 600 mm-es ajtóval és 430 mm vak visszatéréssel. A bal és a jobb fal elemsora emiatt 600 mm-rel a saroktól indul.', false],
-  ['05','A bal falon a munkalap 300 mm-en fordul ki a sarokból.',
-   'Az 1-es rajz szerint a 600-as sarok után egy 300 mm széles ajtós alsó szekrény áll, fölötte a szokásos 600 mm hátfal és egy 300 mm-es felső szekrény polcokkal. Csak a 600-as hűtőelem megy végig padlótól mennyezetig: a hűtőajtó kb. 1780, fölötte egy szekrény a 2530-as magasságig.', false],
-  ['06','A felsők és a magas elem közé takaróléc kerül.',
-   'Az alsó soron a 100 mm-es takaróléc eltolja a felsőket, ezért a 3. felső szekrény 1800-nál véget ér, a magas elem viszont csak 1900-nál kezdődik. A köztes 100 mm-t most egy takaróléc zárja le, nem marad nyitott rés.', false],
-  ['07','A hűtőelem mélysége 600 vagy 620.',
-   'A vázlaton mindkettő szerepel. A modell 600-zal számol; ha 620 lesz, a bal fal elemei 20 mm-rel beljebb állnak, a hossz nem változik.', true],
-  ['08','A sütő és a mikró magassága kezelhetőségre van beállítva.',
-   'A 3-as vázlat arányaiból eredetileg 680–1280 és 1280–1880 jött ki, de így a mikró ajtaja 1880-ig ért, ami túl magas. Most a sütő 460–1055 (közepe 757), a mikró 1060–1515 (közepe 1287), alattuk két 178 mm-es fiók, fölöttük egy 890 mm-es ajtó. Ha más magasság kell, ez a három szám szabadon tolható.', true]
+   'A vĂˇzlat szerinti sor 600 + 600 + 100 + 600 + 600 = 2500 mm, a felmĂ©rt fal viszont 2730 mm. A kĂĽlĂ¶nbsĂ©get a modell a sor vĂ©gĂ©n, a magas elem mellett hagyja szabadon. EldĂ¶ntendĹ‘: szĂ©lesebb takarĂłlĂ©c, egy 230-as kihĂşzhatĂł fĹ±szertartĂł, vagy a magas elem a fal vĂ©gĂ©hez tolva.', true],
+  ['02','A magassĂˇgi osztĂˇs 100 + 900 + 600 + 930 = 2530.',
+   'LĂˇbazat 100, alsĂł korpusz 760, munkalap 40 â€” Ă­gy a munkalap teteje 900. HĂˇtfal (munkalap Ă©s felsĹ‘ kĂ¶zĂ¶tti rĂ©s) 600, felsĹ‘ szekrĂ©ny 930, legfelĂĽl 100 mm koronalĂ©c a mennyezetig.', false],
+  ['03','Az ablak mĂ©retei a fotĂłbĂłl jĂ¶nnek.',
+   'Bal oldalt 1340 mm, az ablak 1180 mm, jobbra 740 mm â€” ez pontosan kiadja a 3260-at, Ă©s egybevĂˇg a fotĂłn jelĂ¶lt 134 / 74 cm-rel. A kĂ¶nyĂ¶klĹ‘ magassĂˇgĂˇt 1050 mm-rel vettem fel, az ablak felsĹ‘ Ă©le 1950; ezt Ă©rdemes a helyszĂ­nen leellenĹ‘rizni, mert a felnyithatĂł felsĹ‘ magassĂˇga ettĹ‘l fĂĽgg.', true],
+  ['04','A kĂ©t alsĂł sarok vakfelĂĽlettel oldĂłdik meg.',
+   'MindkĂ©t sarkot az ablakos fal 1030 mm-es eleme viszi, 600 mm-es ajtĂłval Ă©s 430 mm vak visszatĂ©rĂ©ssel. A bal Ă©s a jobb fal elemsora emiatt 600 mm-rel a saroktĂłl indul.', false],
+  ['05','A bal falon a munkalap 300 mm-en fordul ki a sarokbĂłl.',
+   'Az 1-es rajz szerint a 600-as sarok utĂˇn egy 300 mm szĂ©les ajtĂłs alsĂł szekrĂ©ny Ăˇll, fĂ¶lĂ¶tte a szokĂˇsos 600 mm hĂˇtfal Ă©s egy 300 mm-es felsĹ‘ szekrĂ©ny polcokkal. Csak a 600-as hĹ±tĹ‘elem megy vĂ©gig padlĂłtĂłl mennyezetig: a hĹ±tĹ‘ajtĂł kb. 1780, fĂ¶lĂ¶tte egy szekrĂ©ny a 2530-as magassĂˇgig.', false],
+  ['06','A felsĹ‘k Ă©s a magas elem kĂ¶zĂ© takarĂłlĂ©c kerĂĽl.',
+   'Az alsĂł soron a 100 mm-es takarĂłlĂ©c eltolja a felsĹ‘ket, ezĂ©rt a 3. felsĹ‘ szekrĂ©ny 1800-nĂˇl vĂ©get Ă©r, a magas elem viszont csak 1900-nĂˇl kezdĹ‘dik. A kĂ¶ztes 100 mm-t most egy takarĂłlĂ©c zĂˇrja le, nem marad nyitott rĂ©s.', false],
+  ['07','A hĹ±tĹ‘elem mĂ©lysĂ©ge 600 vagy 620.',
+   'A vĂˇzlaton mindkettĹ‘ szerepel. A modell 600-zal szĂˇmol; ha 620 lesz, a bal fal elemei 20 mm-rel beljebb Ăˇllnak, a hossz nem vĂˇltozik.', true],
+  ['08','A sĂĽtĹ‘ Ă©s a mikrĂł magassĂˇga kezelhetĹ‘sĂ©gre van beĂˇllĂ­tva.',
+   'A 3-as vĂˇzlat arĂˇnyaibĂłl eredetileg 680â€“1280 Ă©s 1280â€“1880 jĂ¶tt ki, de Ă­gy a mikrĂł ajtaja 1880-ig Ă©rt, ami tĂşl magas. Most a sĂĽtĹ‘ 460â€“1055 (kĂ¶zepe 757), a mikrĂł 1060â€“1515 (kĂ¶zepe 1287), alattuk kĂ©t 178 mm-es fiĂłk, fĂ¶lĂ¶ttĂĽk egy 890 mm-es ajtĂł. Ha mĂˇs magassĂˇg kell, ez a hĂˇrom szĂˇm szabadon tolhatĂł.', true]
 ];
 
 /* =========================================================================
-   2. SVG NÉZETRAJZOK
+   2. SVG NĂ‰ZETRAJZOK
    ========================================================================= */
 
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
-/* Ajtószám egy felső elemen: a sarokszekrények egyajtósak, a 600-as felsők kétajtósak */
+/* AjtĂłszĂˇm egy felsĹ‘ elemen: a sarokszekrĂ©nyek egyajtĂłsak, a 600-as felsĹ‘k kĂ©tajtĂłsak */
 const doorCount = u => (u.kind==='upperCorner'||u.kind==='upperReturn') ? (u.w>=700?2:1) : (u.w>=550?2:1);
 const UPPER_KINDS = ['upper','upperCorner','upperReturn','upperHood','upperLift','upperFiller'];
 
@@ -628,7 +630,7 @@ function defsBlock(){
   </defs>`;
 }
 
-/* vízszintes méretvonal */
+/* vĂ­zszintes mĂ©retvonal */
 function dimH(x1,x2,y,txt){
   const t=46;
   return `<g>
@@ -641,7 +643,7 @@ function dimH(x1,x2,y,txt){
     <text class="dw-dimtxt" x="${(x1+x2)/2}" y="${y+4}">${txt}</text>
   </g>`;
 }
-/* függőleges méretvonal (y1,y2 már SVG-koordináta) */
+/* fĂĽggĹ‘leges mĂ©retvonal (y1,y2 mĂˇr SVG-koordinĂˇta) */
 function dimV(y1,y2,x,txt){
   const t=46;
   return `<g>
@@ -656,12 +658,12 @@ function dimV(y1,y2,x,txt){
 }
 
 function elevationSVG(wall){
-  const L = wall.len, sy = y => RH - y;          // mm a padlótól -> SVG y
+  const L = wall.len, sy = y => RH - y;          // mm a padlĂłtĂłl -> SVG y
   const ml=340, mr=150, mt=370, mb=720;
   const out=[];
-  const X = u => wall.flip ? (L - u.o - u.w) : u.o;   // megjelenítési eltolás
+  const X = u => wall.flip ? (L - u.o - u.w) : u.o;   // megjelenĂ­tĂ©si eltolĂˇs
 
-  // fal kontúr
+  // fal kontĂşr
   out.push(`<rect class="dw-wall" x="0" y="${sy(RH)}" width="${L}" height="${RH}"/>`);
   out.push(`<line class="dw-floor" x1="-60" y1="${sy(0)}" x2="${L+60}" y2="${sy(0)}"/>`);
 
@@ -691,16 +693,16 @@ function elevationSVG(wall){
         out.push(front(x, Y.plinth, u.w, 1780));
         out.push(front(x, 1900, u.w, 530));
         out.push(`<rect class="dw-front" x="${x+14}" y="${sy(RH)+14}" width="${u.w-28}" height="72"/>`);
-        out.push(`<text class="dw-lbl" x="${x+u.w/2}" y="${sy(950)}">Hűtő</text>`);
+        out.push(`<text class="dw-lbl" x="${x+u.w/2}" y="${sy(950)}">HĹ±tĹ‘</text>`);
         break;
       case 'tallOven':{
         out.push(`<rect class="dw-tall" x="${x}" y="${sy(RH)}" width="${u.w}" height="${RH}"/>`);
         out.push(front(x, Y.plinth, u.w, 178));
         out.push(front(x, 278, u.w, 178));
         out.push(`<rect class="dw-app" x="${x+14}" y="${sy(1055)}" width="${u.w-28}" height="595"/>`);
-        out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(757)}">Sütő</text>`);
+        out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(757)}">SĂĽtĹ‘</text>`);
         out.push(`<rect class="dw-app" x="${x+14}" y="${sy(1515)}" width="${u.w-28}" height="455"/>`);
-        out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(1287)}">Mikró</text>`);
+        out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(1287)}">MikrĂł</text>`);
         out.push(front(x, 1540, u.w, 890));
         out.push(`<rect class="dw-front" x="${x+14}" y="${sy(RH)+14}" width="${u.w-28}" height="72"/>`);
         break;}
@@ -709,23 +711,23 @@ function elevationSVG(wall){
         const bl = u.blind, dX = (u.blindSide==='left') ? x+bl : x;
         out.push(`<rect class="dw-blind" x="${(u.blindSide==='left')?x:x+u.w-bl}" y="${sy(Y.carcass)}" width="${bl}" height="${Y.carcass-Y.plinth}"/>`);
         out.push(front(dX, Y.plinth, u.w-bl, Y.carcass-Y.plinth));
-        out.push(`<text class="dw-lbl-s" x="${dX+(u.w-bl)/2}" y="${sy(470)}">sarokszekrény</text>`);
+        out.push(`<text class="dw-lbl-s" x="${dX+(u.w-bl)/2}" y="${sy(470)}">sarokszekrĂ©ny</text>`);
         break;}
       case 'dishwasher':
         out.push(`<rect class="dw-app" x="${x}" y="${sy(Y.carcass)}" width="${u.w}" height="${Y.carcass-Y.plinth}"/>`);
-        out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(470)}">Mosogatógép</text>`);
+        out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(470)}">MosogatĂłgĂ©p</text>`);
         break;
       case 'baseSink':
         out.push(`<rect class="dw-box" x="${x}" y="${sy(Y.carcass)}" width="${u.w}" height="${Y.carcass-Y.plinth}"/>`);
         out.push(front(x, Y.plinth, u.w, Y.carcass-Y.plinth, 2));
-        out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(470)}">Mosogató</text>`);
+        out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(470)}">MosogatĂł</text>`);
         break;
       case 'baseDrawers':
         out.push(`<rect class="dw-box" x="${x}" y="${sy(Y.carcass)}" width="${u.w}" height="${Y.carcass-Y.plinth}"/>`);
         out.push(front(x, Y.plinth, u.w, 140));
         out.push(front(x, Y.plinth+140, u.w, 300));
         out.push(front(x, Y.plinth+440, u.w, 320));
-        out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(470)}">3 fiók</text>`);
+        out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(470)}">3 fiĂłk</text>`);
         break;
       case 'baseDoor':
         out.push(`<rect class="dw-box" x="${x}" y="${sy(Y.carcass)}" width="${u.w}" height="${Y.carcass-Y.plinth}"/>`);
@@ -750,9 +752,9 @@ function elevationSVG(wall){
         out.push(`<line class="dw-front" x1="${x+16}" y1="${sy(1960)}" x2="${x+u.w-16}" y2="${sy(1960)}" stroke-dasharray="30 20"/>`);
         if(u.kind==='upperHood'){
           out.push(`<rect class="dw-app" x="${x+14}" y="${sy(1620)}" width="${u.w-28}" height="105"/>`);
-          out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(1810)}">páraelszívó</text>`);
+          out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(1810)}">pĂˇraelszĂ­vĂł</text>`);
         } else if(u.kind==='upperCorner'||u.kind==='upperReturn'){
-          out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(1680)}">sarokszekrény</text>`);
+          out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(1680)}">sarokszekrĂ©ny</text>`);
         }
         break;}
       case 'upperFiller':
@@ -761,7 +763,7 @@ function elevationSVG(wall){
       case 'upperLift':
         out.push(`<rect class="dw-box" x="${x}" y="${sy(Y.upperTop)}" width="${u.w}" height="${Y.upperTop-WINTOP}"/>`);
         out.push(front(x, WINTOP, u.w, Y.upperTop-WINTOP));
-        out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(2190)}">felnyitható ajtó</text>`);
+        out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(2190)}">felnyithatĂł ajtĂł</text>`);
         break;
     }
   }
@@ -774,7 +776,7 @@ function elevationSVG(wall){
     out.push(`<text class="dw-lbl" x="${WIN.o+WIN.w/2}" y="${sy(WIN.sill+WIN.h/2)}">ABLAK</text>`);
   }
 
-  // munkalap + koronaléc + lábazat jelzése
+  // munkalap + koronalĂ©c + lĂˇbazat jelzĂ©se
   const topRuns = wall.id==='B' ? [[0,RW]] : wall.id==='C' ? [[600,1900]] : [];
   topRuns.forEach(([a,b])=>{
     const xa = wall.flip? L-b : a, xb = wall.flip? L-a : b;
@@ -782,7 +784,7 @@ function elevationSVG(wall){
   });
   out.push(`<rect class="dw-top" x="0" y="${sy(RH)}" width="${L}" height="100" opacity=".25"/>`);
 
-  // méretvonalak
+  // mĂ©retvonalak
   const isUpper = u => UPPER_KINDS.includes(u.kind);
   const dimY = sy(0)+180;
   for(const u of wall.units){
@@ -790,31 +792,31 @@ function elevationSVG(wall){
     out.push(dimH(X(u), X(u)+u.w, dimY + (u.w<430 ? 160 : 0), u.w));
   }
   out.push(dimH(0, L, dimY+350, L));
-  // felső sor méretei
+  // felsĹ‘ sor mĂ©retei
   const upDimY = sy(RH)-120;
   for(const u of wall.units){
     if(!isUpper(u)) continue;
     out.push(dimH(X(u), X(u)+u.w, upDimY - (u.w<430 ? 160 : 0), u.w));
   }
-  // magasságok
+  // magassĂˇgok
   out.push(dimV(sy(Y.top), sy(0), -120, 900));
   out.push(dimV(sy(Y.upperBot), sy(Y.top), -120, 600));
   out.push(dimV(sy(Y.upperTop), sy(Y.upperBot), -120, 930));
   out.push(dimV(sy(RH), sy(0), -250, RH));
 
-  out.push(`<text class="dw-tag" x="-330" y="${sy(0)+640}">${wall.tag} · ${esc(wall.name)}</text>`);
+  out.push(`<text class="dw-tag" x="-330" y="${sy(0)+640}">${wall.tag} Â· ${esc(wall.name)}</text>`);
 
-  return `<svg viewBox="${-ml} ${-mt} ${L+ml+mr} ${RH+mt+mb}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(wall.name)} nézetrajz">${defsBlock()}${out.join('')}</svg>`;
+  return `<svg viewBox="${-ml} ${-mt} ${L+ml+mr} ${RH+mt+mb}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(wall.name)} nĂ©zetrajz">${defsBlock()}${out.join('')}</svg>`;
 }
 
 function planSVG(){
   const m=420, W=RW, D=RD, out=[];
-  const T=150; // falvastagság
+  const T=150; // falvastagsĂˇg
   // falak
   out.push(`<rect x="${-T}" y="${-T}" width="${W+2*T}" height="${T}" fill="var(--surface-2)" stroke="var(--ink)" stroke-width="5"/>`);
   out.push(`<rect x="${-T}" y="0" width="${T}" height="${D}" fill="var(--surface-2)" stroke="var(--ink)" stroke-width="5"/>`);
   out.push(`<rect x="${W}" y="0" width="${T}" height="${D}" fill="var(--surface-2)" stroke="var(--ink)" stroke-width="5"/>`);
-  // padlókontúr
+  // padlĂłkontĂşr
   out.push(`<rect x="0" y="0" width="${W}" height="${D}" fill="none" stroke="var(--line-2)" stroke-width="3" stroke-dasharray="40 26"/>`);
   // ablak
   out.push(`<rect x="${WIN.o}" y="${-T}" width="${WIN.w}" height="${T}" fill="var(--surface)" stroke="var(--ink)" stroke-width="5"/>`);
@@ -829,51 +831,54 @@ function planSVG(){
     }
     return s;
   };
-  // alsó / magas elemek alaprajzban
+  // alsĂł / magas elemek alaprajzban
   out.push(rect(0,0,1030,600,'dw-box','sarok'));
   out.push(rect(0,0,430,600,'dw-blind',''));
-  out.push(rect(1030,0,600,600,'dw-app','mosogatógép'));
-  out.push(rect(1630,0,600,600,'dw-box','mosogató'));
+  out.push(rect(1030,0,600,600,'dw-app','mosogatĂłgĂ©p'));
+  out.push(rect(1630,0,600,600,'dw-box','mosogatĂł'));
   out.push(rect(2230,0,1030,600,'dw-box','sarok'));
   out.push(rect(2830,0,430,600,'dw-blind',''));
 
-  out.push(rect(0,600,600,300,'dw-box','alsó',true));
-  out.push(rect(0,900,600,600,'dw-tall','hűtő',true));
+  out.push(rect(0,600,600,300,'dw-box','alsĂł',true));
+  out.push(rect(0,900,600,600,'dw-tall','hĹ±tĹ‘',true));
 
-  out.push(rect(RW-600,600,600,600,'dw-box','fiókok',true));
+  out.push(rect(RW-600,600,600,600,'dw-box','fiĂłkok',true));
   out.push(rect(RW-600,1200,600,100,'dw-blind',''));
-  out.push(rect(RW-600,1300,600,600,'dw-box','alsó',true));
-  out.push(rect(RW-600,1900,600,600,'dw-tall','sütő',true));
+  out.push(rect(RW-600,1300,600,600,'dw-box','alsĂł',true));
+  out.push(rect(RW-600,1900,600,600,'dw-tall','sĂĽtĹ‘',true));
   out.push(`<rect x="${RW-600}" y="2500" width="600" height="230" fill="none" stroke="var(--mark)" stroke-width="4" stroke-dasharray="30 20"/>`);
 
-  // felsők kontúrja szaggatottan
+  // felsĹ‘k kontĂşrja szaggatottan
   const up = (x,z,w,d)=>`<rect x="${x}" y="${z}" width="${w}" height="${d}" fill="none" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="30 18"/>`;
   out.push(up(0,0,1340,350)); out.push(up(1340,0,1180,350)); out.push(up(2520,0,740,350));
   out.push(up(RW-350,350,350,1450));
   out.push(up(0,350,350,550));
 
-  // gépek
+  // gĂ©pek
   out.push(`<rect x="${RW-540}" y="610" width="500" height="580" fill="none" stroke="var(--ink)" stroke-width="5"/>`);
-  out.push(`<text class="dw-lbl-s" x="${RW-290}" y="900" transform="rotate(-90 ${RW-290} 900)">főzőlap</text>`);
+  out.push(`<text class="dw-lbl-s" x="${RW-290}" y="900" transform="rotate(-90 ${RW-290} 900)">fĹ‘zĹ‘lap</text>`);
   out.push(`<rect x="1660" y="60" width="540" height="460" rx="24" fill="none" stroke="var(--ink)" stroke-width="5"/>`);
 
-  // méretek
+  // mĂ©retek
   out.push(dimH(0, W, D+200, W));
   out.push(dimH(WIN.o, WIN.o+WIN.w, -T-230, WIN.w));
   out.push(dimV(0, LEFTLEN, -T-180, LEFTLEN));
   out.push(dimV(0, D, W+T+180, D));
-  out.push(`<text class="dw-tag" x="0" y="${D+400}">Alaprajz · felülnézet</text>`);
+  out.push(`<text class="dw-tag" x="0" y="${D+400}">Alaprajz Â· felĂĽlnĂ©zet</text>`);
 
   return `<svg viewBox="${-m} ${-m} ${W+2*m} ${D+2*m}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Alaprajz">${defsBlock()}${out.join('')}</svg>`;
 }
 
 /* --- tabok --- */
+/* vbw = a rajz viewBox-szĂ©lessĂ©ge (falhossz + margĂłk); ebbĹ‘l jĂ¶n az azonos lĂ©ptĂ©k */
+const EL_MARGIN = 490, PLAN_MARGIN = 840;
 const SHEETS = [
-  {key:'B', title:'2 · Ablakos fal', note:'Nézet kívülről befelé · 3260 mm', svg:()=>elevationSVG(WALLS.B)},
-  {key:'C', title:'3 · Jobb fal', note:'Főzőlap és sütős magas elem · 2730 mm', svg:()=>elevationSVG(WALLS.C)},
-  {key:'A', title:'1 · Bal fal', note:'Hűtő és nyitott polcok · 1500 mm', svg:()=>elevationSVG(WALLS.A)},
-  {key:'P', title:'Alaprajz', note:'U‑alak, felülnézet · 3260 × 2730 mm', svg:planSVG}
+  {key:'B', title:'2 Â· Ablakos fal', note:'MosogatĂł az ablak alatt Â· 3260 mm', vbw:RW+EL_MARGIN,      svg:()=>elevationSVG(WALLS.B)},
+  {key:'C', title:'3 Â· Jobb fal',    note:'FĹ‘zĹ‘lap Ă©s sĂĽtĹ‘s magas elem Â· 2730 mm', vbw:RD+EL_MARGIN, svg:()=>elevationSVG(WALLS.C)},
+  {key:'A', title:'1 Â· Bal fal',     note:'HĹ±tĹ‘ Ă©s 300-as elem Â· 1500 mm', vbw:LEFTLEN+EL_MARGIN,     svg:()=>elevationSVG(WALLS.A)},
+  {key:'P', title:'Alaprajz',        note:'Uâ€‘alak, felĂĽlnĂ©zet Â· 3260 Ă— 2730 mm', vbw:RW+PLAN_MARGIN,  svg:planSVG}
 ];
+const MAX_VBW = Math.max(...SHEETS.map(s=>s.vbw));
 const tabsEl=document.getElementById('tabs'), sheetEl=document.getElementById('sheet');
 SHEETS.forEach((s,i)=>{
   const b=document.createElement('button');
@@ -883,10 +888,18 @@ SHEETS.forEach((s,i)=>{
   tabsEl.appendChild(b);
 });
 function showSheet(i){
+  const s = SHEETS[i];
   [...tabsEl.children].forEach((b,j)=>b.setAttribute('aria-selected', String(i===j)));
-  sheetEl.innerHTML = SHEETS[i].svg();
-  document.getElementById('sheet-title').textContent = SHEETS[i].title;
-  document.getElementById('sheet-note').textContent = SHEETS[i].note;
+  sheetEl.innerHTML = s.svg();
+  // minden rajz ugyanakkora mm/kĂ©ppont lĂ©ptĂ©kben: a szĂ©lessĂ©g a valĂłs mĂ©rettel arĂˇnyos
+  const ratio = s.vbw / MAX_VBW;
+  const svg = sheetEl.querySelector('svg');
+  if(svg){
+    svg.style.width    = (ratio*100).toFixed(2) + '%';
+    svg.style.minWidth = Math.round(700*ratio) + 'px';
+  }
+  document.getElementById('sheet-title').textContent = s.title;
+  document.getElementById('sheet-note').textContent  = s.note + ' Â· azonos lĂ©ptĂ©k minden rajzon';
 }
 showSheet(0);
 
@@ -905,7 +918,7 @@ for(const row of SCHEDULE){
 }
 document.getElementById('stat-count').textContent = cnt;
 
-/* --- gépek --- */
+/* --- gĂ©pek --- */
 const ap=document.getElementById('appliances');
 for(const [w,n,d,dim] of APPLIANCES){
   const el=document.createElement('article'); el.className='card';
@@ -925,27 +938,27 @@ for(const [n,t,b,warn] of NOTES){
    3. 3D MODELL
    ========================================================================= */
 
-/* Minden változatban más a FELSŐ front színe is, különben a váltás nem látszik. */
+/* Minden vĂˇltozatban mĂˇs a FELSĹ front szĂ­ne is, kĂĽlĂ¶nben a vĂˇltĂˇs nem lĂˇtszik. */
 const PALETTES = {
-  sage:     {name:'Zsálya & krém',     base:'#6E7A66', upper:'#EDE7DA', tall:'#6E7A66', top:'#C7A87B', plinth:'#2F332E', carcass:'#DED8CC'},
-  graphite: {name:'Grafit & fehér',    base:'#3A3F44', upper:'#F2F0EC', tall:'#3A3F44', top:'#D7D3CB', plinth:'#212427', carcass:'#CFCCC6'},
-  oak:      {name:'Krém & tölgy',      base:'#E4DCCE', upper:'#B78A57', tall:'#B78A57', top:'#4B4945', plinth:'#35322E', carcass:'#D8CFBF'},
-  navy:     {name:'Tengerkék, egyszínű',base:'#2F3D52', upper:'#2F3D52', tall:'#2F3D52', top:'#DEDAD2', plinth:'#1C2533', carcass:'#AEB6C0'},
-  cashmere: {name:'Kasmír & dió',      base:'#C9B9A2', upper:'#C9B9A2', tall:'#7A5638', top:'#7A5638', plinth:'#4A3A2C', carcass:'#DCD3C4'},
-  forest:   {name:'Erdőzöld, egyszínű',base:'#2F4438', upper:'#2F4438', tall:'#2F4438', top:'#2A2C2E', plinth:'#1A241E', carcass:'#9FAEA4'}
+  sage:     {name:'ZsĂˇlya & krĂ©m',     base:'#6E7A66', upper:'#EDE7DA', tall:'#6E7A66', top:'#C7A87B', plinth:'#2F332E', carcass:'#DED8CC'},
+  graphite: {name:'Grafit & fehĂ©r',    base:'#3A3F44', upper:'#F2F0EC', tall:'#3A3F44', top:'#D7D3CB', plinth:'#212427', carcass:'#CFCCC6'},
+  oak:      {name:'KrĂ©m & tĂ¶lgy',      base:'#E4DCCE', upper:'#B78A57', tall:'#B78A57', top:'#4B4945', plinth:'#35322E', carcass:'#D8CFBF'},
+  navy:     {name:'TengerkĂ©k, egyszĂ­nĹ±',base:'#2F3D52', upper:'#2F3D52', tall:'#2F3D52', top:'#DEDAD2', plinth:'#1C2533', carcass:'#AEB6C0'},
+  cashmere: {name:'KasmĂ­r & diĂł',      base:'#C9B9A2', upper:'#C9B9A2', tall:'#7A5638', top:'#7A5638', plinth:'#4A3A2C', carcass:'#DCD3C4'},
+  forest:   {name:'ErdĹ‘zĂ¶ld, egyszĂ­nĹ±',base:'#2F4438', upper:'#2F4438', tall:'#2F4438', top:'#2A2C2E', plinth:'#1A241E', carcass:'#9FAEA4'}
 };
 const COLOR_KEYS   = ['base','upper','tall','top','plinth','carcass'];
 const COLOR_LABELS = {
-  base:'Alsó szekrény frontok', upper:'Felső szekrény frontok', tall:'Magas elemek (hűtő, sütő)',
-  top:'Munkalap és hátfal',     plinth:'Lábazat',               carcass:'Korpusz, látszó élek'
+  base:'AlsĂł szekrĂ©ny frontok', upper:'FelsĹ‘ szekrĂ©ny frontok', tall:'Magas elemek (hĹ±tĹ‘, sĂĽtĹ‘)',
+  top:'Munkalap Ă©s hĂˇtfal',     plinth:'LĂˇbazat',               carcass:'Korpusz, lĂˇtszĂł Ă©lek'
 };
 
 const canvas = document.getElementById('scene');
 const viewer = document.getElementById('viewer');
 const loadingEl = document.getElementById('loading');
 
-/* Érintésvezérelt eszközön a natív felbontáson rajzolunk a kétszeres helyett,
-   és feleakkora árnyéktérképet használunk — ettől marad folyamatos telefonon. */
+/* Ă‰rintĂ©svezĂ©relt eszkĂ¶zĂ¶n a natĂ­v felbontĂˇson rajzolunk a kĂ©tszeres helyett,
+   Ă©s feleakkora ĂˇrnyĂ©ktĂ©rkĂ©pet hasznĂˇlunk â€” ettĹ‘l marad folyamatos telefonon. */
 const COARSE = matchMedia('(pointer: coarse)').matches;
 
 const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
@@ -958,8 +971,8 @@ renderer.toneMappingExposure = 1.02;
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#dfe3e6');
 
-/* Környezeti tükröződés: enélkül a króm és az üveg lapos szürke folt marad.
-   A RoomEnvironment egy belső térből számolt IBL — ez adja a realisztikus csillanásokat. */
+/* KĂ¶rnyezeti tĂĽkrĂ¶zĹ‘dĂ©s: enĂ©lkĂĽl a krĂłm Ă©s az ĂĽveg lapos szĂĽrke folt marad.
+   A RoomEnvironment egy belsĹ‘ tĂ©rbĹ‘l szĂˇmolt IBL â€” ez adja a realisztikus csillanĂˇsokat. */
 const pmrem = new THREE.PMREMGenerator(renderer);
 scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.035).texture;
 pmrem.dispose();
@@ -967,7 +980,7 @@ pmrem.dispose();
 const camera = new THREE.PerspectiveCamera(62, 1, 10, 60000);
 const orbitCam = new THREE.PerspectiveCamera(48, 1, 10, 60000);
 
-/* ---- textúrák ---- */
+/* ---- textĂşrĂˇk ---- */
 function floorTexture(){
   const c=document.createElement('canvas'); c.width=c.height=1024; const g=c.getContext('2d');
   g.fillStyle='#c9a87e'; g.fillRect(0,0,1024,1024);
@@ -1034,30 +1047,30 @@ const M = {
   plant:  new THREE.MeshStandardMaterial({color:'#4E7A4A', roughness:.85}),
   pot:    new THREE.MeshStandardMaterial({color:'#B9A48C', roughness:.9}),
   board:  new THREE.MeshStandardMaterial({color:'#C49A62', roughness:.75}),
-  // tárgyak
+  // tĂˇrgyak
   chrome: new THREE.MeshStandardMaterial({color:'#D4D8DC', roughness:.13, metalness:.95}),
   satin:  new THREE.MeshStandardMaterial({color:'#C2C7CB', roughness:.32, metalness:.72}),
   wood:   new THREE.MeshStandardMaterial({color:'#B07F4C', roughness:.66}),
   cer:    new THREE.MeshStandardMaterial({color:'#F1EEE6', roughness:.3}),
   cerA:   new THREE.MeshStandardMaterial({color:'#4F6B74', roughness:.36}),
   cloth:  new THREE.MeshStandardMaterial({color:'#D3DBE0', roughness:.96}),
-  // beépített gépek
+  // beĂ©pĂ­tett gĂ©pek
   appBody:  new THREE.MeshStandardMaterial({color:'#1A1D20', roughness:.34, metalness:.40}),
   appGlass: new THREE.MeshStandardMaterial({color:'#0A0C0E', roughness:.06, metalness:.30}),
   appGlass2:new THREE.MeshStandardMaterial({color:'#15191D', roughness:.14, metalness:.20}),
   inox:     new THREE.MeshStandardMaterial({color:'#BFC5CA', roughness:.26, metalness:.92}),
   display:  new THREE.MeshStandardMaterial({color:'#0A0E12', roughness:.2, emissive:'#2F7FC0', emissiveIntensity:.85}),
   gasket:   new THREE.MeshStandardMaterial({color:'#15181A', roughness:.9}),
-  // gépek belső tere
+  // gĂ©pek belsĹ‘ tere
   ovenGlass:new THREE.MeshStandardMaterial({color:'#0E1215', roughness:.06, metalness:.12, transparent:true, opacity:.34}),
   enamel:   new THREE.MeshStandardMaterial({color:'#55595E', roughness:.42, metalness:.25, emissive:'#3A2A12', emissiveIntensity:.45}),
   ttGlass:  new THREE.MeshStandardMaterial({color:'#A6BCC8', roughness:.07, metalness:.1, transparent:true, opacity:.45}),
   warmLamp: new THREE.MeshStandardMaterial({color:'#FFE6B4', emissive:'#FFC977', emissiveIntensity:2.2, roughness:.6}),
-  // lámpa
+  // lĂˇmpa
   shade:    new THREE.MeshStandardMaterial({color:'#24262A', roughness:.5, metalness:.3, side:THREE.DoubleSide}),
   bulb:     new THREE.MeshStandardMaterial({color:'#FFF0D0', emissive:'#FFD79A', emissiveIntensity:3.2, roughness:.4}),
   cable:    new THREE.MeshStandardMaterial({color:'#1C1E21', roughness:.8}),
-  // tárgyak
+  // tĂˇrgyak
   bowl:     new THREE.MeshStandardMaterial({color:'#EDE7DA', roughness:.3, side:THREE.DoubleSide}),
   crust:    new THREE.MeshStandardMaterial({color:'#B07A42', roughness:.92}),
   crumb:    new THREE.MeshStandardMaterial({color:'#E8D4AE', roughness:.95}),
@@ -1067,8 +1080,8 @@ const M = {
   wire:     new THREE.MeshStandardMaterial({color:'#C8CDD1', roughness:.24, metalness:.9, envMapIntensity:1.35})
 };
 
-/* Mennyire tükrözzön vissza a környezetből egy-egy anyag. A fal szándékosan alacsony,
-   hogy mindenhol egy tónusú maradjon; a fém és az üveg kapja a csillanásokat. */
+/* Mennyire tĂĽkrĂ¶zzĂ¶n vissza a kĂ¶rnyezetbĹ‘l egy-egy anyag. A fal szĂˇndĂ©kosan alacsony,
+   hogy mindenhol egy tĂłnusĂş maradjon; a fĂ©m Ă©s az ĂĽveg kapja a csillanĂˇsokat. */
 [[[M.wall,M.ceil], .28],
  [[M.floor], .42],
  [[M.base,M.upper,M.tall,M.carcass,M.plinth,M.shelf], .55],
@@ -1090,25 +1103,25 @@ function ring(R,t,mat,x,y,z,arc){
   const m=new THREE.Mesh(new THREE.TorusGeometry(R,t,12,30,arc||Math.PI*2), mat);
   m.position.set(x,y,z); m.castShadow=true; kitchen.add(m); return m;
 }
-/* lekerekített doboz — ettől nem néznek ki vágott éllel a tárgyak */
+/* lekerekĂ­tett doboz â€” ettĹ‘l nem nĂ©znek ki vĂˇgott Ă©llel a tĂˇrgyak */
 function rbox(w,h,d,r,mat,x,y,z){
   const m=new THREE.Mesh(new RoundedBoxGeometry(w,h,d,4,r), mat);
   m.position.set(x,y,z); m.castShadow=true; m.receiveShadow=true; kitchen.add(m); return m;
 }
-/* megforgatott profil: tálak, edények, fűszerőrlők valódi sziluettje */
+/* megforgatott profil: tĂˇlak, edĂ©nyek, fĹ±szerĹ‘rlĹ‘k valĂłdi sziluettje */
 function lathe(pts, mat, x,y,z, seg){
   const v = pts.map(p => new THREE.Vector2(p[0], p[1]));
   const m = new THREE.Mesh(new THREE.LatheGeometry(v, seg||40), mat);
   m.position.set(x,y,z); m.castShadow=true; m.receiveShadow=true; kitchen.add(m); return m;
 }
 
-/* ---- fal-lokális doboz: o..o+w a fal mentén, y..y+h, d..d+dd mélységben ---- */
+/* ---- fal-lokĂˇlis doboz: o..o+w a fal mentĂ©n, y..y+h, d..d+dd mĂ©lysĂ©gben ---- */
 function wbox(wall,o,w,y,h,d,dd,mat){
   if(wall==='A') return box(dd,h,w,mat, d+dd/2, y+h/2, o+w/2);
   if(wall==='B') return box(w,h,dd,mat, o+w/2, y+h/2, d+dd/2);
   return box(dd,h,w,mat, RW-d-dd/2, y+h/2, o+w/2);
 }
-/* gép belső tere: alj, tető, két oldal, hátfal — ezért látszik bele az ajtón */
+/* gĂ©p belsĹ‘ tere: alj, tetĹ‘, kĂ©t oldal, hĂˇtfal â€” ezĂ©rt lĂˇtszik bele az ajtĂłn */
 function liner(wall,o,w,y0,h,d0,d1,mat,t){
   t = t||14; const dd = d1-d0;
   wbox(wall,o,w,y0,t,d0,dd,mat);
@@ -1117,14 +1130,14 @@ function liner(wall,o,w,y0,h,d0,d1,mat,t){
   wbox(wall,o+w-t,t,y0,h,d0,dd,mat);
   wbox(wall,o,w,y0,h,d0,t,mat);
 }
-/* sütőrács */
+/* sĂĽtĹ‘rĂˇcs */
 function rack(wall,o,w,y,d0,d1){
   const dd = d1-d0;
   wbox(wall,o,9,y,9,d0,dd,M.inox);
   wbox(wall,o+w-9,9,y,9,d0,dd,M.inox);
   for(let i=0;i<=8;i++) wbox(wall,o,w,y+1,7, d0 + i*(dd/8) - 3.5, 7, M.inox);
 }
-/* mikró forgótányér */
+/* mikrĂł forgĂłtĂˇnyĂ©r */
 function turntable(wall,o,y,depCenter,r){
   const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,10,40), M.ttGlass);
   if(wall==='A') m.position.set(depCenter, y, o);
@@ -1133,7 +1146,7 @@ function turntable(wall,o,y,depCenter,r){
   kitchen.add(m); return m;
 }
 
-/* Az aktuális színösszeállítás — előbeállításból vagy a saját színekből. */
+/* Az aktuĂˇlis szĂ­nĂ¶sszeĂˇllĂ­tĂˇs â€” elĹ‘beĂˇllĂ­tĂˇsbĂłl vagy a sajĂˇt szĂ­nekbĹ‘l. */
 let current = Object.assign({}, PALETTES.sage);
 function applyColors(c){
   Object.assign(current, c);
@@ -1147,22 +1160,22 @@ function applyColors(c){
   M.shelf.color.set(current.base);
 }
 
-/* ---- geometria-segédek ---- */
+/* ---- geometria-segĂ©dek ---- */
 const kitchen = new THREE.Group(); scene.add(kitchen);
-const encl   = new THREE.Group(); kitchen.add(encl);   // mennyezet + elülső fal (forgatásnál elrejtve)
+const encl   = new THREE.Group(); kitchen.add(encl);   // mennyezet + elĂĽlsĹ‘ fal (forgatĂˇsnĂˇl elrejtve)
 function box(w,h,d,mat,x,y,z,parent){
   const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d), mat);
   m.position.set(x,y,z); m.castShadow=true; m.receiveShadow=true;
   (parent||kitchen).add(m); return m;
 }
-/* fal-lokális elhelyezés: o = eltolás a fal mentén, w = szélesség, dep = mélység */
+/* fal-lokĂˇlis elhelyezĂ©s: o = eltolĂˇs a fal mentĂ©n, w = szĂ©lessĂ©g, dep = mĂ©lysĂ©g */
 function addBox(wall,o,w,y0,h,dep,mat){
   if(wall==='A') return box(dep,h,w,mat, dep/2, y0+h/2, o+w/2);
   if(wall==='B') return box(w,h,dep,mat, o+w/2, y0+h/2, dep/2);
   return box(dep,h,w,mat, RW-dep/2, y0+h/2, o+w/2);
 }
-/* Korpusz: 2 mm-rel a faltól, 22 mm-rel a front síkja mögött.
-   Így semelyik két lap nem esik egybe — ez szüntette meg a villogást. */
+/* Korpusz: 2 mm-rel a faltĂłl, 22 mm-rel a front sĂ­kja mĂ¶gĂ¶tt.
+   ĂŤgy semelyik kĂ©t lap nem esik egybe â€” ez szĂĽntette meg a villogĂˇst. */
 function addCarc(wall,o,w,y0,h,dep,mat){
   const d=dep-14, c=2+d/2;
   if(wall==='A') return box(d,h,w,mat, c, y0+h/2, o+w/2);
@@ -1189,14 +1202,14 @@ function doors(wall,o,w,y0,h,dep,mat,n,gripY){
   }
 }
 
-/* ---- gépek részletezéséhez ----
-   panelAt: t vastag lap, amelynek a KÜLSŐ síkja depOuter-nél van (rétegezhető) */
+/* ---- gĂ©pek rĂ©szletezĂ©sĂ©hez ----
+   panelAt: t vastag lap, amelynek a KĂśLSĹ sĂ­kja depOuter-nĂ©l van (rĂ©tegezhetĹ‘) */
 function panelAt(wall,o,w,y0,h,depOuter,t,mat){
   if(wall==='A') return box(t,h,w,mat, depOuter-t/2, y0+h/2, o+w/2);
   if(wall==='B') return box(w,h,t,mat, o+w/2, y0+h/2, depOuter-t/2);
   return box(t,h,w,mat, RW-depOuter+t/2, y0+h/2, o+w/2);
 }
-/* kiálló gomb a front síkjából */
+/* kiĂˇllĂł gomb a front sĂ­kjĂˇbĂłl */
 function knob(wall,o,y,depOuter,r,len){
   r=r||19; len=len||24;
   const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r*.88,len,22), M.inox);
@@ -1205,7 +1218,7 @@ function knob(wall,o,y,depOuter,r,len){
   else { m.rotation.z=Math.PI/2; m.position.set(RW-depOuter-len/2, y, o); }
   m.castShadow=true; kitchen.add(m); return m;
 }
-/* vízszintes fogantyúrúd két tartóval */
+/* vĂ­zszintes fogantyĂşrĂşd kĂ©t tartĂłval */
 function handleBar(wall,o,w,y,dep,stand){
   stand = stand||58;
   const r=13, m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,w,20), M.chrome);
@@ -1216,7 +1229,7 @@ function handleBar(wall,o,w,y,dep,stand){
   panelAt(wall,o+14,26,y-15,30,dep+stand,stand,M.chrome);
   panelAt(wall,o+w-40,26,y-15,30,dep+stand,stand,M.chrome);
 }
-/* függőleges fogantyúrúd két tartóval */
+/* fĂĽggĹ‘leges fogantyĂşrĂşd kĂ©t tartĂłval */
 function handleBarV(wall,o,y0,h,dep,stand){
   stand = stand||48;
   const r=12, m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,20), M.chrome);
@@ -1228,8 +1241,8 @@ function handleBarV(wall,o,y0,h,dep,stand){
   panelAt(wall,o-13,26,y0+h-40,28,dep+stand,stand,M.chrome);
 }
 
-/* Beépített sütő: zománcozott belső tér két ráccsal és világítással,
-   előtte áttetsző üvegajtó keretbe fogva, fölötte inox kezelőpanel. */
+/* BeĂ©pĂ­tett sĂĽtĹ‘: zomĂˇncozott belsĹ‘ tĂ©r kĂ©t rĂˇccsal Ă©s vilĂˇgĂ­tĂˇssal,
+   elĹ‘tte ĂˇttetszĹ‘ ĂĽvegajtĂł keretbe fogva, fĂ¶lĂ¶tte inox kezelĹ‘panel. */
 function builtInOven(wall,o,w,y0,h,dep){
   const fr=30, panelH=96;
   const iy = y0+26, ih = h-panelH-52;
@@ -1237,7 +1250,7 @@ function builtInOven(wall,o,w,y0,h,dep){
   liner(wall, o+fr+10, w-2*fr-20, iy, ih, 70, dep-44, M.enamel, 14);
   rack(wall, o+fr+28, w-2*fr-56, iy+ih-210, 92, dep-74);
   rack(wall, o+fr+28, w-2*fr-56, iy+ih-350, 92, dep-74);
-  wbox(wall, o+fr+26, 18, iy+ih-150, 62, 140, 80, M.warmLamp);   // belső lámpa
+  wbox(wall, o+fr+26, 18, iy+ih-150, 62, 140, 80, M.warmLamp);   // belsĹ‘ lĂˇmpa
 
   panelAt(wall,o,w,y0,26,dep,20,M.appBody);
   panelAt(wall,o,w,y0+h-panelH,panelH,dep,20,M.appBody);
@@ -1252,8 +1265,8 @@ function builtInOven(wall,o,w,y0,h,dep){
   handleBar(wall,o+18,w-36,y0+h-panelH-32,dep,60);
 }
 
-/* Beépített mikró: belső tér üveg forgótányérral, áttetsző ajtó,
-   jobb oldalt inox kezelősáv, köztük függőleges fogantyú. */
+/* BeĂ©pĂ­tett mikrĂł: belsĹ‘ tĂ©r ĂĽveg forgĂłtĂˇnyĂ©rral, ĂˇttetszĹ‘ ajtĂł,
+   jobb oldalt inox kezelĹ‘sĂˇv, kĂ¶ztĂĽk fĂĽggĹ‘leges fogantyĂş. */
 function builtInMicro(wall,o,w,y0,h,dep){
   const ctrl=150, fr=26;
   const dw = w-ctrl;
@@ -1273,27 +1286,27 @@ function builtInMicro(wall,o,w,y0,h,dep){
   handleBarV(wall,o+dw-24,y0+72,h-144,dep,46);
 }
 
-/* ---- helyiség ---- */
+/* ---- helyisĂ©g ---- */
 function buildRoom(){
   const T=150;
 
-  // padló (a helyiségen túl is fut, hogy ne szakadjon le a kép)
+  // padlĂł (a helyisĂ©gen tĂşl is fut, hogy ne szakadjon le a kĂ©p)
   const f=new THREE.Mesh(new THREE.PlaneGeometry(RW+4000, RD+4000), M.floor);
   f.rotation.x=-Math.PI/2; f.position.set(RW/2, 0, RD/2+600); f.receiveShadow=true; kitchen.add(f);
 
-  // mennyezet + elülső fal: forgatás módban elrejtve, hogy belelássunk
+  // mennyezet + elĂĽlsĹ‘ fal: forgatĂˇs mĂłdban elrejtve, hogy belelĂˇssunk
   const c=new THREE.Mesh(new THREE.PlaneGeometry(RW+2*T, RD+2*T), M.ceil);
   c.rotation.x=Math.PI/2; c.position.set(RW/2, RH, RD/2); encl.add(c);
   box(RW+2*T, RH, T, M.wall, RW/2, RH/2, RD+T/2, encl);
 
-  // hátsó fal az ablaknyílással
+  // hĂˇtsĂł fal az ablaknyĂ­lĂˇssal
   const back = (x0,x1,y0,y1)=>box(x1-x0, y1-y0, T, M.wall, (x0+x1)/2, (y0+y1)/2, -T/2);
   back(-T, WIN.o, 0, RH);
   back(WIN.o+WIN.w, RW+T, 0, RH);
   back(WIN.o, WIN.o+WIN.w, 0, WIN.sill);
   back(WIN.o, WIN.o+WIN.w, WINTOP, RH);
 
-  // bal és jobb fal — tömör, a helyiség teljes mélységében
+  // bal Ă©s jobb fal â€” tĂ¶mĂ¶r, a helyisĂ©g teljes mĂ©lysĂ©gĂ©ben
   box(T, RH, RD+2*T, M.wall, -T/2,    RH/2, RD/2);
   box(T, RH, RD+2*T, M.wall, RW+T/2,  RH/2, RD/2);
 
@@ -1305,10 +1318,10 @@ function buildRoom(){
   box(fr, WIN.h-2*fr, 66, M.frame, WIN.o+WIN.w-fr/2, WIN.sill+WIN.h/2, 36);
   box(fr, WIN.h-2*fr, 66, M.frame, WIN.o+WIN.w/2, WIN.sill+WIN.h/2, 36);
   box(WIN.w-2*fr-4, WIN.h-2*fr-4, 8, M.glass, WIN.o+WIN.w/2, WIN.sill+WIN.h/2, 14);
-  // könyöklő: a kávában marad, csak 24 mm-re áll ki — így a csaptelep nem ütközik bele
+  // kĂ¶nyĂ¶klĹ‘: a kĂˇvĂˇban marad, csak 24 mm-re Ăˇll ki â€” Ă­gy a csaptelep nem ĂĽtkĂ¶zik bele
   box(WIN.w+110, 26, 174, M.wall, WIN.o+WIN.w/2, WIN.sill-13, -63);
 
-  // kinti háttér
+  // kinti hĂˇttĂ©r
   const out=new THREE.Mesh(new THREE.PlaneGeometry(7000,4600), M.out);
   out.position.set(WIN.o+WIN.w/2, 1400, -1700); kitchen.add(out);
 }
@@ -1319,7 +1332,7 @@ function buildCabinets(){
   const UH = Y.upperTop - Y.upperBot;     // 930
   const TH = Y.ceil - Y.plinth;           // 2430
 
-  // lábazatok (1 mm-rel a padló fölött, 2 mm-rel a faltól)
+  // lĂˇbazatok (1 mm-rel a padlĂł fĂ¶lĂ¶tt, 2 mm-rel a faltĂłl)
   box(RW-4, Y.plinth-1, 548, M.plinth, RW/2, (Y.plinth+1)/2, 276);
   box(548, Y.plinth-1, 900, M.plinth, 276, (Y.plinth+1)/2, 1050);
   box(548, Y.plinth-1, 1900, M.plinth, RW-276, (Y.plinth+1)/2, 1550);
@@ -1331,7 +1344,7 @@ function buildCabinets(){
       switch(u.kind){
 
         case 'tallOpen': {
-          // nyitott elem: oldalak + hátlap + polcok (nincs tömör korpusz, hogy belelássunk)
+          // nyitott elem: oldalak + hĂˇtlap + polcok (nincs tĂ¶mĂ¶r korpusz, hogy belelĂˇssunk)
           const D0=DEP.tall, cy=Y.plinth+TH/2;
           box(D0, TH, 18, M.tall, D0/2, cy, o+9);
           box(D0, TH, 18, M.tall, D0/2, cy, o+w-9);
@@ -1339,7 +1352,7 @@ function buildCabinets(){
           box(D0, 22, w-36, M.tall, D0/2, Y.plinth+11, o+w/2);
           box(D0, 22, w-36, M.tall, D0/2, Y.plinth+TH-11, o+w/2);
           for(let s=1;s<=5;s++) box(D0-30, 20, w-36, M.tall, (D0-30)/2+22, Y.plinth+s*400, o+w/2);
-          // apró tárgyak a polcokon
+          // aprĂł tĂˇrgyak a polcokon
           [[1,'#C0734B',130],[2,'#7E8F9B',170],[4,'#D8C7A6',150]].forEach(([s,col,hh],i)=>{
             const mat=new THREE.MeshStandardMaterial({color:col, roughness:.72});
             box(140, hh, 110, mat, 230+i*46, Y.plinth+s*400+10+hh/2, o+w/2+(i-1)*48);
@@ -1348,16 +1361,16 @@ function buildCabinets(){
 
         case 'tallFridge': {
           addCarc(wid,o,w,Y.plinth,TH,DEP.tall,M.carcass);
-          panelAt(wid,o-3,w+6,Y.plinth-5,1790,DEP.tall-20,10,M.gasket); // árnyékfuga az ajtó körül
-          addFront(wid,o,w,Y.plinth,1780,DEP.tall,M.tall);   // hűtőajtó 100–1880
+          panelAt(wid,o-3,w+6,Y.plinth-5,1790,DEP.tall-20,10,M.gasket); // ĂˇrnyĂ©kfuga az ajtĂł kĂ¶rĂĽl
+          addFront(wid,o,w,Y.plinth,1780,DEP.tall,M.tall);   // hĹ±tĹ‘ajtĂł 100â€“1880
           addGrip(wid,o,w,1850,DEP.tall);
-          addFront(wid,o,w,1900,530,DEP.tall,M.tall);        // szekrény 1900–2430
+          addFront(wid,o,w,1900,530,DEP.tall,M.tall);        // szekrĂ©ny 1900â€“2430
           addGrip(wid,o,w,1930,DEP.tall);
-          addFront(wid,o,w,2430,100,DEP.tall,M.tall);        // koronaléc
+          addFront(wid,o,w,2430,100,DEP.tall,M.tall);        // koronalĂ©c
           break; }
 
         case 'tallOven': {
-          // a gépek helyén nincs tömör korpusz, csak oldallap és hátfal — így látszik a belső tér
+          // a gĂ©pek helyĂ©n nincs tĂ¶mĂ¶r korpusz, csak oldallap Ă©s hĂˇtfal â€” Ă­gy lĂˇtszik a belsĹ‘ tĂ©r
           addCarc(wid,o,16,Y.plinth,TH,DEP.tall,M.carcass);
           addCarc(wid,o+w-16,16,Y.plinth,TH,DEP.tall,M.carcass);
           addCarc(wid,o+16,w-32,Y.plinth,356,DEP.tall,M.carcass);
@@ -1365,8 +1378,8 @@ function buildCabinets(){
           addCarc(wid,o+16,w-32,456,1059,76,M.carcass);
           addFront(wid,o,w,100,178,DEP.tall,M.tall); addGrip(wid,o,w,252,DEP.tall);
           addFront(wid,o,w,278,178,DEP.tall,M.tall); addGrip(wid,o,w,430,DEP.tall);
-          builtInOven (wid,o,w, 460,595,DEP.tall);            // sütő  460–1055
-          builtInMicro(wid,o,w,1060,455,DEP.tall);            // mikró 1060–1515
+          builtInOven (wid,o,w, 460,595,DEP.tall);            // sĂĽtĹ‘  460â€“1055
+          builtInMicro(wid,o,w,1060,455,DEP.tall);            // mikrĂł 1060â€“1515
           addFront(wid,o,w,1540,890,DEP.tall,M.tall); addGrip(wid,o,w,1570,DEP.tall);
           addFront(wid,o,w,2430,100,DEP.tall,M.tall);
           break; }
@@ -1381,9 +1394,9 @@ function buildCabinets(){
 
         case 'dishwasher': {
           addCarc(wid,o,w,Y.plinth,CH,DEP.base,M.carcass);
-          addFront(wid,o,w,Y.plinth,CH-50,DEP.base,M.base);              // bújtatott front
+          addFront(wid,o,w,Y.plinth,CH-50,DEP.base,M.base);              // bĂşjtatott front
           addGrip(wid,o,w,Y.plinth+CH-80,DEP.base);
-          panelAt(wid,o,w,Y.carcass-46,46,DEP.base+2,14,M.inox);         // kezelősáv felül
+          panelAt(wid,o,w,Y.carcass-46,46,DEP.base+2,14,M.inox);         // kezelĹ‘sĂˇv felĂĽl
           panelAt(wid,o+w/2-80,160,Y.carcass-36,24,DEP.base+7,4,M.display);
           for(let i=0;i<4;i++) knob(wid, o+420+i*48, Y.carcass-24, DEP.base+2, 9, 11);
           break; }
@@ -1419,8 +1432,8 @@ function buildCabinets(){
           doors(wid,o,w,Y.upperBot,UH,DEP.upper,M.upper, doorCount(u), Y.upperBot+34);
           break; }
 
-        /* Sarok visszatérés: a szomszéd fal eleme foglalja a 350 mm mély sávot,
-           itt csak a mögötte maradó szakasz épül meg — így nem lóg egymásba a két felső. */
+        /* Sarok visszatĂ©rĂ©s: a szomszĂ©d fal eleme foglalja a 350 mm mĂ©ly sĂˇvot,
+           itt csak a mĂ¶gĂ¶tte maradĂł szakasz Ă©pĂĽl meg â€” Ă­gy nem lĂłg egymĂˇsba a kĂ©t felsĹ‘. */
         case 'upperReturn': {
           const o2=o+DEP.upper, w2=w-DEP.upper;
           if(w2>20){
@@ -1451,48 +1464,48 @@ function buildCabinets(){
   }
 }
 
-/* Sarok- és véglezárások: a rajzokon látszó, de elemlistában nem szereplő takarások */
+/* Sarok- Ă©s vĂ©glezĂˇrĂˇsok: a rajzokon lĂˇtszĂł, de elemlistĂˇban nem szereplĹ‘ takarĂˇsok */
 function buildTrim(){
-  // látszó oldallapok a sorok végén
+  // lĂˇtszĂł oldallapok a sorok vĂ©gĂ©n
   box(DEP.tall, Y.ceil, 20, M.tall, DEP.tall/2, Y.ceil/2, 1510);
   box(DEP.tall, Y.ceil, 20, M.tall, RW-DEP.tall/2, Y.ceil/2, 2510);
-  // koronaléc a felsők fölött (2 mm-rel a mennyezet alatt)
+  // koronalĂ©c a felsĹ‘k fĂ¶lĂ¶tt (2 mm-rel a mennyezet alatt)
   const ch=Y.ceil-Y.upperTop-2, cy=Y.upperTop+ch/2;
   box(RW-4, ch, 58, M.upper, RW/2, cy, 31);
   box(58, ch, 1798, M.upper, RW-31, cy, 901);
   box(58, ch, 550, M.upper, 31, cy, 625);
 }
 
-/* ---- munkalap, hátfal, LED, gépek ---- */
+/* ---- munkalap, hĂˇtfal, LED, gĂ©pek ---- */
 function buildSurfaces(){
   const TT=40, yT=Y.carcass+TT/2;
   const slab=(x0,x1,z0,z1)=>box(x1-x0, TT, z1-z0, M.top, (x0+x1)/2, yT, (z0+z1)/2);
 
-  // bal fal: a 300-as alsó elem munkalapja, a sarokból kifordulva
+  // bal fal: a 300-as alsĂł elem munkalapja, a sarokbĂłl kifordulva
   slab(2,620,620,900);
-  // ablakos fal: x 0..2640, z 0..620 — mosogatókivágás 1670..2190 / 140..560
-  // (hátul 140 mm marad a csaptelepnek)
+  // ablakos fal: x 0..2640, z 0..620 â€” mosogatĂłkivĂˇgĂˇs 1670..2190 / 140..560
+  // (hĂˇtul 140 mm marad a csaptelepnek)
   slab(0,1690,0,620); slab(2170,2640,0,620);
   slab(1690,2170,0,160); slab(1690,2170,540,620);
-  // sarok + jobb fal: x 2640..3260, z 0..1900 — főzőlap-kivágás
+  // sarok + jobb fal: x 2640..3260, z 0..1900 â€” fĹ‘zĹ‘lap-kivĂˇgĂˇs
   slab(2640,RW,0,610); slab(2640,RW,1190,1900);
   slab(2640,RW-540,610,1190); slab(RW-40,RW,610,1190);
 
-  // hátfal (fröccsenésgátló)
-  // A hátfal mindhárom falon végigfut a sarkokig — különben a sarokban folt marad a falon.
+  // hĂˇtfal (frĂ¶ccsenĂ©sgĂˇtlĂł)
+  // A hĂˇtfal mindhĂˇrom falon vĂ©gigfut a sarkokig â€” kĂĽlĂ¶nben a sarokban folt marad a falon.
   box(1340, Y.upperBot-Y.top, 18, M.splash, 670,  (Y.top+Y.upperBot)/2, 11);
   box(740,  Y.upperBot-Y.top, 18, M.splash, 2890, (Y.top+Y.upperBot)/2, 11);
   box(WIN.w, WIN.sill-Y.top, 18, M.splash, WIN.o+WIN.w/2, (Y.top+WIN.sill)/2, 11);
   box(18, Y.upperBot-Y.top, 1900, M.splash, RW-11, (Y.top+Y.upperBot)/2, 950);
   box(18, Y.upperBot-Y.top, 900,  M.splash, 11,    (Y.top+Y.upperBot)/2, 450);
 
-  // LED szalagok a felsők alatt
+  // LED szalagok a felsĹ‘k alatt
   const led=(x,y,z,w,d)=>box(w,10,d,M.led,x,y,z);
   led(670, Y.upperBot-8, DEP.upper-30, 1340, 24);
   led(2890, Y.upperBot-8, DEP.upper-30, 740, 24);
   led(RW-DEP.upper+30, Y.upperBot-8, 1200, 24, 1200);
 
-  // --- mosogató: alulra épített medence lekerekített sarkokkal ---
+  // --- mosogatĂł: alulra Ă©pĂ­tett medence lekerekĂ­tett sarkokkal ---
   const sx=1930, T0=Y.top;
   const bx0=1670, bx1=2190, bz0=140, bz1=560, by0=650, by1=862;
   const bw=bx1-bx0, bd=bz1-bz0, bh=by1-by0;
@@ -1501,11 +1514,11 @@ function buildSurfaces(){
   box(bw, bh, 12, M.satin, bcx, bcy, bz1-6);
   box(12, bh, bd, M.satin, bx0+6, bcy, bcz);
   box(12, bh, bd, M.satin, bx1-6, bcy, bcz);
-  // R30 sarokhengerek: ettől nem éles doboz a medence belseje
+  // R30 sarokhengerek: ettĹ‘l nem Ă©les doboz a medence belseje
   [[bx0+42,bz0+42],[bx1-42,bz0+42],[bx0+42,bz1-42],[bx1-42,bz1-42]]
     .forEach(([cx,cz]) => cyl(30,30,bh,M.satin,cx,bcy,cz,28));
-  box(bw-24, 14, bd-24, M.satin, bcx, by0+7, bcz);          // fenék
-  // lefolyó: süllyesztett fészek, króm szűrő kereszttel és gombbal
+  box(bw-24, 14, bd-24, M.satin, bcx, by0+7, bcz);          // fenĂ©k
+  // lefolyĂł: sĂĽllyesztett fĂ©szek, krĂłm szĹ±rĹ‘ kereszttel Ă©s gombbal
   cyl(70,70,16, M.satin,  sx, by0+8,  350, 32);
   cyl(56,56,12, M.chrome, sx, by0+18, 350, 32);
   cyl(46,46,6,  M.dark,   sx, by0+24, 350, 32);
@@ -1513,12 +1526,12 @@ function buildSurfaces(){
   box(9,5,92,   M.chrome, sx, by0+27, 350);
   sph(15, M.chrome, sx, by0+30, 350);
 
-  // --- csaptelep: kihúzható zuhanyfejes, hajlított nyakú keverő ---
-  const fz=96;                                   // a fal és a medence közötti 140 mm-es sávban
+  // --- csaptelep: kihĂşzhatĂł zuhanyfejes, hajlĂ­tott nyakĂş keverĹ‘ ---
+  const fz=96;                                   // a fal Ă©s a medence kĂ¶zĂ¶tti 140 mm-es sĂˇvban
   cyl(42,44,9,   M.chrome, sx, T0+4,   fz, 32);  // talplemez
-  cyl(33,33,16,  M.chrome, sx, T0+14,  fz, 32);  // takarógyűrű
+  cyl(33,33,16,  M.chrome, sx, T0+14,  fz, 32);  // takarĂłgyĹ±rĹ±
   cyl(23,25,172, M.chrome, sx, T0+106, fz, 26);  // test
-  cyl(27,27,20,  M.chrome, sx, T0+198, fz, 26);  // patronház
+  cyl(27,27,20,  M.chrome, sx, T0+198, fz, 26);  // patronhĂˇz
   const neckCurve = new THREE.CatmullRomCurve3([
     new THREE.Vector3(sx, T0+206, fz),
     new THREE.Vector3(sx, T0+300, fz+2),
@@ -1529,12 +1542,12 @@ function buildSurfaces(){
   ]);
   const neck = new THREE.Mesh(new THREE.TubeGeometry(neckCurve, 96, 17, 24, false), M.chrome);
   neck.castShadow = true; kitchen.add(neck);
-  cyl(25,23,88, M.chrome, sx, T0+266, fz+198, 26);   // kihúzható zuhanyfej
-  cyl(24,24,8,  M.dark,   sx, T0+222, fz+198, 26);   // perlátor
+  cyl(25,23,88, M.chrome, sx, T0+266, fz+198, 26);   // kihĂşzhatĂł zuhanyfej
+  cyl(24,24,8,  M.dark,   sx, T0+222, fz+198, 26);   // perlĂˇtor
   cyl(10,8,118, M.chrome, sx+46, T0+232, fz+4, 18).rotation.set(.16,0,-1.02);  // kar
   sph(12, M.chrome, sx+92, T0+262, fz+14);
 
-  // --- főzőlap ---
+  // --- fĹ‘zĹ‘lap ---
   box(500, 10, 580, M.dark, RW-290, Y.carcass+TT+2, 900);
   for(const [dx,dz] of [[-110,-150],[110,-150],[-110,150],[110,150]]){
     const r=new THREE.Mesh(new THREE.RingGeometry(70,76,36), new THREE.MeshBasicMaterial({color:'#4a4e52', side:THREE.DoubleSide}));
@@ -1543,30 +1556,30 @@ function buildSurfaces(){
 
 }
 
-/* ---- hétköznapi tárgyak a pulton ---- */
+/* ---- hĂ©tkĂ¶znapi tĂˇrgyak a pulton ---- */
 function buildProps(){
   const T = Y.top;                 // munkalap teteje, 900
-  const HOB = Y.carcass + 40 + 7;  // a főzőlap üvegének felszíne
+  const HOB = Y.carcass + 40 + 7;  // a fĹ‘zĹ‘lap ĂĽvegĂ©nek felszĂ­ne
 
   /* ---------- bal fal 300-as pultja ---------- */
 
-  // vízforraló: megforgatott profil, fekete fedél, ívelt fogantyú, kiöntő
+  // vĂ­zforralĂł: megforgatott profil, fekete fedĂ©l, Ă­velt fogantyĂş, kiĂ¶ntĹ‘
   lathe([[0,0],[64,0],[82,14],[90,56],[86,150],[74,194],[70,206],[0,206]], M.satin, 290, T, 760);
   cyl(72,76,22, M.dark, 290, T+216, 760, 32);
   sph(17, M.dark, 290, T+236, 760);
   ring(78,10, M.dark, 290, T+212, 760, Math.PI).rotation.set(0, Math.PI/2, 0);
   cyl(10,28,86, M.satin, 364, T+168, 760, 20).rotation.set(0,0,-1.1);
 
-  // két bögre, belül kivájva
+  // kĂ©t bĂ¶gre, belĂĽl kivĂˇjva
   [[470,700,'#F1EEE6'],[478,832,'#4F6B74']].forEach(([x,z,c])=>{
     const m = new THREE.MeshStandardMaterial({color:c, roughness:.3, side:THREE.DoubleSide});
     lathe([[0,0],[40,0],[43,8],[43,94],[36,94],[35,16],[0,14]], m, x, T, z, 30);
     ring(27,7, m, x, T+58, z+46).rotation.set(0,Math.PI/2,0);
   });
 
-  /* ---------- ablakos fal pultja, balról jobbra ---------- */
+  /* ---------- ablakos fal pultja, balrĂłl jobbra ---------- */
 
-  // fűszertálca: fatálca, három üveg fa tetővel, só- és borsőrlő
+  // fĹ±szertĂˇlca: fatĂˇlca, hĂˇrom ĂĽveg fa tetĹ‘vel, sĂł- Ă©s borsĹ‘rlĹ‘
   rbox(240,22,152,8, M.tray, 540, T+11, 300);
   [[482,92],[540,120],[598,82]].forEach(([x,hh])=>{
     const g = new THREE.MeshStandardMaterial({color:'#E7E0CE', roughness:.24, transparent:true, opacity:.86});
@@ -1579,52 +1592,52 @@ function buildProps(){
     sph(13, M.dark, x, T+182, 286);
   });
 
-  // vágódeszka egész kenyérrel és kenyérvágó késsel
+  // vĂˇgĂłdeszka egĂ©sz kenyĂ©rrel Ă©s kenyĂ©rvĂˇgĂł kĂ©ssel
   rbox(470,28,300,12, M.wood, 1060, T+14, 330);
   const loaf = new THREE.Mesh(new THREE.CapsuleGeometry(64,160,14,30), M.crust);
   loaf.rotation.z = Math.PI/2; loaf.scale.set(1,.86,.88);
   loaf.position.set(1130, T+84, 318); loaf.castShadow=true; kitchen.add(loaf);
   rbox(176,5,30,2, M.chrome, 1022, T+31, 434);   // penge
-  rbox(98,20,26,8, M.dark,   886,  T+38, 434);   // nyél
+  rbox(98,20,26,8, M.dark,   886,  T+38, 434);   // nyĂ©l
 
-  // csepegtető a mosogatótól balra: tálca, drótrács, tányérok, evőeszköztartó
+  // csepegtetĹ‘ a mosogatĂłtĂłl balra: tĂˇlca, drĂłtrĂˇcs, tĂˇnyĂ©rok, evĹ‘eszkĂ¶ztartĂł
   const dx = 1455, dz = 330;
-  rbox(300,16,352,8, M.satin, dx, T+8, dz);                 // csepegtető tálca
+  rbox(300,16,352,8, M.satin, dx, T+8, dz);                 // csepegtetĹ‘ tĂˇlca
   cyl(6,6,286, M.wire, dx, T+22, dz-156, 12).rotation.set(0,0,Math.PI/2);
   cyl(6,6,286, M.wire, dx, T+22, dz+156, 12).rotation.set(0,0,Math.PI/2);
-  for(let i=0;i<10;i++){                                     // drótívek, köztük a tányérhelyek
+  for(let i=0;i<10;i++){                                     // drĂłtĂ­vek, kĂ¶ztĂĽk a tĂˇnyĂ©rhelyek
     ring(108,4, M.wire, dx-126+i*28, T+18, dz, Math.PI).rotation.set(0,Math.PI/2,0);
   }
-  [1372,1428,1484,1540].forEach((x,i)=>{                     // négy tányér élére állítva
+  [1372,1428,1484,1540].forEach((x,i)=>{                     // nĂ©gy tĂˇnyĂ©r Ă©lĂ©re ĂˇllĂ­tva
     const p = lathe([[0,0],[70,5],[96,18],[101,25],[96,30],[66,16],[0,8]], M.plate, x, T+18+101, dz, 40);
     p.rotation.set(0, 0, Math.PI/2 + (i%2 ? .05 : -.05));
   });
   lathe([[0,0],[44,0],[46,6],[46,118],[38,118],[37,10],[0,8]], M.wire, 1580, T+18, dz-110, 26);
-  [[-14,-8],[4,6],[16,-4]].forEach(([ox,oz],i)=>{            // evőeszközök
+  [[-14,-8],[4,6],[16,-4]].forEach(([ox,oz],i)=>{            // evĹ‘eszkĂ¶zĂ¶k
     cyl(5,5,150, M.chrome, 1580+ox, T+18+120, dz-110+oz, 10).rotation.set(.06*(i-1), 0, .05*(i-1));
   });
 
-  // mosogatószer és szivacs, jól elkülönítve a gyümölcsöstáltól
+  // mosogatĂłszer Ă©s szivacs, jĂłl elkĂĽlĂ¶nĂ­tve a gyĂĽmĂ¶lcsĂ¶stĂˇltĂłl
   lathe([[0,0],[34,0],[36,10],[34,96],[18,116],[16,130],[0,130]], M.cerA, 2250, T, 240, 30);
   cyl(14,14,44, M.chrome, 2250, T+150, 240, 20);
   box(16,13,52, M.chrome, 2250, T+170, 262);
   rbox(112,42,74,12, new THREE.MeshStandardMaterial({color:'#D9C25E', roughness:.95}), 2250, T+21, 452);
 
-  // gyümölcsöstál: valódi tálprofil, peremmel
+  // gyĂĽmĂ¶lcsĂ¶stĂˇl: valĂłdi tĂˇlprofil, peremmel
   lathe([[0,14],[64,6],[136,26],[174,72],[176,86],[140,40],[68,20],[0,28]], M.bowl, 2520, T, 330, 46);
   [[-74,-40,'#B23A2E'],[16,-58,'#D8A23C'],[74,16,'#86A04C'],
    [-26,48,'#B23A2E'],[28,34,'#D8A23C'],[0,-4,'#8E5BA6']]
     .forEach(([dx,dz,c])=> sph(44, new THREE.MeshStandardMaterial({color:c, roughness:.58}), 2520+dx, T+70, 330+dz));
 
-  // cserepes növény
+  // cserepes nĂ¶vĂ©ny
   lathe([[0,0],[64,0],[74,10],[84,104],[90,118],[86,118],[0,110]], M.pot, 2830, T, 300, 32);
   sph(102, M.plant, 2830, T+186, 300).scale.set(1,.78,1);
   sph(68, M.plant, 2788, T+240, 278);
   sph(58, M.plant, 2872, T+232, 326);
 
-  /* ---------- jobb fal: főzőlap és pult ---------- */
+  /* ---------- jobb fal: fĹ‘zĹ‘lap Ă©s pult ---------- */
 
-  // fazék a hátsó-jobb égőn (nem az égők között)
+  // fazĂ©k a hĂˇtsĂł-jobb Ă©gĹ‘n (nem az Ă©gĹ‘k kĂ¶zĂ¶tt)
   const bx = RW-290+110, bz = 900+150;
   lathe([[0,0],[112,0],[124,16],[126,140],[134,152],[130,158],[0,158]], M.satinD, bx, HOB, bz, 38);
   cyl(136,136,14, M.satin, bx, HOB+166, bz, 38);
@@ -1632,68 +1645,68 @@ function buildProps(){
   ring(26,8, M.dark, bx-140, HOB+112, bz).rotation.set(0,Math.PI/2,0);
   ring(26,8, M.dark, bx+140, HOB+112, bz).rotation.set(0,Math.PI/2,0);
 
-  // serpenyő az elülső-bal égőn
+  // serpenyĹ‘ az elĂĽlsĹ‘-bal Ă©gĹ‘n
   const px = RW-290-110, pz = 900-150;
   lathe([[0,0],[94,0],[112,14],[118,58],[120,64],[112,60],[98,12],[0,8]], M.satinD, px, HOB, pz, 38);
   cyl(13,13,180, M.dark, px-200, HOB+40, pz, 18).rotation.set(0,0,Math.PI/2);
 
-  // olívaolaj
+  // olĂ­vaolaj
   const oil = new THREE.MeshStandardMaterial({color:'#5E6B3A', roughness:.2, transparent:true, opacity:.9});
   lathe([[0,0],[40,0],[42,10],[42,150],[18,178],[16,216],[22,224],[0,224]], oil, 3150, T, 1262, 30);
   cyl(18,18,20, M.dark, 3150, T+234, 1262, 20);
 
-  // késtartó késekkel, a fal felé döntve
+  // kĂ©startĂł kĂ©sekkel, a fal felĂ© dĂ¶ntve
   rbox(140,250,180,14, M.wood, 3000, T+122, 1320).rotation.z = -0.16;
   [[-44,-48],[-4,-16],[36,22],[-18,54]].forEach(([dx,dz])=>{
     rbox(16,130,34,5, M.dark, 3000+dx, T+296, 1320+dz).rotation.z = -0.16;
   });
 
-  // kenyérpirító
+  // kenyĂ©rpirĂ­tĂł
   rbox(180,165,290,24, M.satin, 2990, T+82, 1560);
   box(150,8,44, M.dark, 2990, T+166, 1524);
   box(150,8,44, M.dark, 2990, T+166, 1596);
   rbox(26,58,20,6, M.dark, 2892, T+118, 1560);
 
-  // szakácskönyv-stósz
+  // szakĂˇcskĂ¶nyv-stĂłsz
   let by = T;
   [[52,'#8C4A3F'],[44,'#3E5C6B'],[36,'#C0962B']].forEach(([hh,c])=>{
     rbox(216, hh, 150, 4, new THREE.MeshStandardMaterial({color:c, roughness:.82}), 3010, by+hh/2, 1810);
     by += hh + 3;
   });
 
-  // konyharuha a sütő fogantyúján
+  // konyharuha a sĂĽtĹ‘ fogantyĂşjĂˇn
   rbox(14, 330, 200, 6, M.cloth, RW-626, 927-168, 2200);
 }
 
-/* ---- mennyezeti világítás ---- */
+/* ---- mennyezeti vilĂˇgĂ­tĂˇs ---- */
 function buildLamp(){
   const lx=1560, lz=1520, base=2042;
   const parts = [
-    cyl(60,60,18, M.cable, lx, RH-9, lz, 26),                    // mennyezeti rózsa
-    cyl(5,5,352,  M.cable, lx, base+120+176, lz, 10),            // kábel
+    cyl(60,60,18, M.cable, lx, RH-9, lz, 26),                    // mennyezeti rĂłzsa
+    cyl(5,5,352,  M.cable, lx, base+120+176, lz, 10),            // kĂˇbel
     lathe([[26,122],[58,82],[148,10],[158,0]], M.shade, lx, base, lz, 40),
     sph(42, M.bulb, lx, base+46, lz)
   ];
-  parts.forEach(p => encl.add(p));                               // a mennyezettel együtt tűnik el
+  parts.forEach(p => encl.add(p));                               // a mennyezettel egyĂĽtt tĹ±nik el
 
   const pend = new THREE.PointLight(0xffd7a0, 2100000, 0, 2);
   pend.position.set(lx, base+30, lz); scene.add(pend);
 }
 
-/* ---- világítás ---- */
+/* ---- vilĂˇgĂ­tĂˇs ---- */
 function buildLights(){
-  // Alap: szórt fény, hogy a falak mindenhol egyforma tónusúak legyenek
+  // Alap: szĂłrt fĂ©ny, hogy a falak mindenhol egyforma tĂłnusĂşak legyenek
   scene.add(new THREE.AmbientLight(0xffffff, .40));
   scene.add(new THREE.HemisphereLight(0xdfeaf6, 0xc9b091, .50));
 
-  // Irányított fényekhez mindig saját célpont, pontosan a helyiség tengelyében,
-  // így nem keletkezik oldalirányú tónuskülönbség a falakon.
+  // IrĂˇnyĂ­tott fĂ©nyekhez mindig sajĂˇt cĂ©lpont, pontosan a helyisĂ©g tengelyĂ©ben,
+  // Ă­gy nem keletkezik oldalirĂˇnyĂş tĂłnuskĂĽlĂ¶nbsĂ©g a falakon.
   const aim = (light, tx,ty,tz) => {
     const t = new THREE.Object3D(); t.position.set(tx,ty,tz); scene.add(t);
     light.target = t; scene.add(light);
   };
 
-  // nap az ablakon át — ez az egyetlen árnyékvető fény
+  // nap az ablakon Ăˇt â€” ez az egyetlen ĂˇrnyĂ©kvetĹ‘ fĂ©ny
   const sun = new THREE.DirectionalLight(0xfff4e4, 1.05);
   sun.position.set(2230, 4200, -3700);
   sun.castShadow = true;
@@ -1701,15 +1714,15 @@ function buildLights(){
   const sc = sun.shadow.camera;
   sc.left=-2900; sc.right=2900; sc.top=2900; sc.bottom=-2900; sc.near=800; sc.far=11000;
   sun.shadow.bias = -0.0003;
-  sun.shadow.normalBias = 28;          // ez szünteti meg a sarkokban a foltos önárnyékolást
+  sun.shadow.normalBias = 28;          // ez szĂĽnteti meg a sarkokban a foltos Ă¶nĂˇrnyĂ©kolĂˇst
   sun.shadow.radius = 2;
   aim(sun, 1630, 900, 1300);
 
-  // egyenletes mennyezeti kitöltés, pontosan felülről
+  // egyenletes mennyezeti kitĂ¶ltĂ©s, pontosan felĂĽlrĹ‘l
   const top = new THREE.DirectionalLight(0xfff6ec, .34);
   top.position.set(1630, 5200, 1250); aim(top, 1630, 0, 1250);
 
-  // halvány elülső kitöltés, szigorúan a helyiség tengelyében
+  // halvĂˇny elĂĽlsĹ‘ kitĂ¶ltĂ©s, szigorĂşan a helyisĂ©g tengelyĂ©ben
   const fill = new THREE.DirectionalLight(0xeef4fa, .26);
   fill.position.set(1630, 1700, 6200); aim(fill, 1630, 1300, 0);
 }
@@ -1718,7 +1731,7 @@ buildRoom(); buildCabinets(); buildTrim(); buildSurfaces(); buildProps(); buildL
 applyColors(PALETTES.sage);
 
 /* =========================================================================
-   4. VEZÉRLÉS
+   4. VEZĂ‰RLĂ‰S
    ========================================================================= */
 
 const R_BODY = 290;
@@ -1750,14 +1763,14 @@ function setMode(m){
   document.getElementById('m-orbit').classList.toggle('on', m==='orbit');
   orbit.enabled = (m==='orbit');
   viewer.classList.toggle('walking', m==='walk');
-  encl.visible = (m==='walk');     // forgatásnál a mennyezet és az elülső fal eltűnik
+  encl.visible = (m==='walk');     // forgatĂˇsnĂˇl a mennyezet Ă©s az elĂĽlsĹ‘ fal eltĹ±nik
 }
 document.getElementById('m-walk').addEventListener('click',()=>setMode('walk'));
 document.getElementById('m-orbit').addEventListener('click',()=>setMode('orbit'));
 setMode('walk');
 
-/* billentyűk — csak akkor élnek, ha a kurzor a nézegető fölött van,
-   így a nyilakkal máshol továbbra is görgetni lehet az oldalt */
+/* billentyĹ±k â€” csak akkor Ă©lnek, ha a kurzor a nĂ©zegetĹ‘ fĂ¶lĂ¶tt van,
+   Ă­gy a nyilakkal mĂˇshol tovĂˇbbra is gĂ¶rgetni lehet az oldalt */
 let hot=false;
 viewer.addEventListener('pointerenter', ()=>{ hot=true; });
 viewer.addEventListener('pointerleave', ()=>{ hot=false; walk.keys=Object.create(null); });
@@ -1769,7 +1782,7 @@ addEventListener('keydown', e=>{
 addEventListener('keyup', e=>{ walk.keys[e.code]=false; });
 addEventListener('blur', ()=>{ walk.keys=Object.create(null); });
 
-/* egér: egyszerű húzás-körbenézés, egérzár nélkül */
+/* egĂ©r: egyszerĹ± hĂşzĂˇs-kĂ¶rbenĂ©zĂ©s, egĂ©rzĂˇr nĂ©lkĂĽl */
 let dragging=false, lastX=0, lastY=0;
 canvas.addEventListener('pointerdown', e=>{
   if(mode!=='walk' || e.pointerType==='touch') return;
@@ -1791,7 +1804,7 @@ canvas.addEventListener('pointermove', e=>{
 });
 canvas.addEventListener('contextmenu', e=>e.preventDefault());
 
-/* érintés: bal fél = mozgás, jobb fél = nézés */
+/* Ă©rintĂ©s: bal fĂ©l = mozgĂˇs, jobb fĂ©l = nĂ©zĂ©s */
 const touch = {look:null, move:null, mx:0, mz:0};
 canvas.addEventListener('touchstart', e=>{
   if(mode!=='walk') return;
@@ -1826,7 +1839,7 @@ const endTouch = e=>{
 canvas.addEventListener('touchend', endTouch);
 canvas.addEventListener('touchcancel', endTouch);
 
-/* nézőpontok */
+/* nĂ©zĹ‘pontok */
 const VIEWS = {
   door:   {p:[760, 1600, 2080], yaw:-0.46,       pitch:-0.05},
   sink:   {p:[1930,1600, 1480], yaw: 0.00,       pitch:-0.12},
@@ -1849,7 +1862,7 @@ document.querySelectorAll('[data-view]').forEach(b=>{
   });
 });
 
-/* ---- színválasztó: előbeállítások + saját színek, a linkben megosztva ---- */
+/* ---- szĂ­nvĂˇlasztĂł: elĹ‘beĂˇllĂ­tĂˇsok + sajĂˇt szĂ­nek, a linkben megosztva ---- */
 const palrow  = document.getElementById('palrow');
 const cgrid   = document.getElementById('customgrid');
 const copyMsg = document.getElementById('copymsg');
@@ -1895,7 +1908,7 @@ function selectPreset(key){
   palrow.querySelectorAll('.pal').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.pal===key)));
   writeHash('p='+key);
 }
-/* a színösszeállítás belekerül a cím végébe, így a link viszi magával */
+/* a szĂ­nĂ¶sszeĂˇllĂ­tĂˇs belekerĂĽl a cĂ­m vĂ©gĂ©be, Ă­gy a link viszi magĂˇval */
 function writeHash(s){
   const str = s || ('c=' + COLOR_KEYS.map(k=>current[k].replace('#','')).join('-'));
   try{ history.replaceState(null,'','#'+str); }catch(e){}
@@ -1920,19 +1933,19 @@ document.getElementById('copylink').addEventListener('click', ()=>{
   const done = t => { copyMsg.textContent = t; setTimeout(()=>{ copyMsg.textContent=''; }, 2800); };
   if(navigator.clipboard && navigator.clipboard.writeText){
     navigator.clipboard.writeText(location.href)
-      .then(()=> done('Link a vágólapon'))
-      .catch(()=> done('Nem sikerült — másold a címsorból'));
-  } else done('Másold a címsorból');
+      .then(()=> done('Link a vĂˇgĂłlapon'))
+      .catch(()=> done('Nem sikerĂĽlt â€” mĂˇsold a cĂ­msorbĂłl'));
+  } else done('MĂˇsold a cĂ­msorbĂłl');
 });
 if(!readHash()) selectPreset('sage');
 
-/* teljes képernyő */
+/* teljes kĂ©pernyĹ‘ */
 document.getElementById('fs').addEventListener('click',()=>{
   if(document.fullscreenElement) document.exitFullscreen?.();
   else viewer.requestFullscreen?.().catch(()=>{});
 });
 
-/* ütközés */
+/* ĂĽtkĂ¶zĂ©s */
 function collide(p){
   const r=R_BODY;
   p.x = Math.max(BOUND.x0, Math.min(BOUND.x1, p.x));
@@ -1948,10 +1961,10 @@ function collide(p){
 }
 
 /* =========================================================================
-   5. MÉRETCÍMKÉK — pont minden elem frontja előtt, a tervrajzi mérettel
+   5. MĂ‰RETCĂŤMKĂ‰K â€” pont minden elem frontja elĹ‘tt, a tervrajzi mĂ©rettel
    ========================================================================= */
 
-/* Melyik magasságban és mélységben áll az elem (a rajzi osztás szerint) */
+/* Melyik magassĂˇgban Ă©s mĂ©lysĂ©gben Ăˇll az elem (a rajzi osztĂˇs szerint) */
 function unitBounds(u){
   switch(u.kind){
     case 'tallFridge': case 'tallOven':
@@ -1970,7 +1983,7 @@ function unitBounds(u){
 function dimText(u,b){
   if(u.kind==='cornerVoid') return `${u.w} mm vak sarok`;
   if(u.kind==='free')       return `${u.w} mm szabad fal`;
-  return `${u.w} × ${b.h} × ${b.d}`;
+  return `${u.w} Ă— ${b.h} Ă— ${b.d}`;
 }
 
 const annotLayer = document.getElementById('annots');
@@ -1979,12 +1992,12 @@ const ANNOTS = [];
 let annotsOn = false;
 
 function buildAnnots(){
-  const OFF = 85;   // ennyivel áll a pont a front síkja elé
+  const OFF = 85;   // ennyivel Ăˇll a pont a front sĂ­kja elĂ©
   for(const wid of ['A','B','C']){
     const wall = WALLS[wid];
     for(const u of wall.units){
       const b = unitBounds(u);
-      // a sarokvisszatéréseknél csak a ténylegesen megépülő szakasz közepe
+      // a sarokvisszatĂ©rĂ©seknĂ©l csak a tĂ©nylegesen megĂ©pĂĽlĹ‘ szakasz kĂ¶zepe
       const o = (u.kind==='upperReturn') ? u.o+DEP.upper : u.o;
       const w = (u.kind==='upperReturn') ? u.w-DEP.upper : u.w;
       const cy = b.y0 + b.h/2;
@@ -1992,16 +2005,16 @@ function buildAnnots(){
       if(wid==='A'){      pos=new THREE.Vector3(b.d+OFF, cy, o+w/2);     nrm=new THREE.Vector3(1,0,0); }
       else if(wid==='B'){ pos=new THREE.Vector3(o+w/2, cy, b.d+OFF);     nrm=new THREE.Vector3(0,0,1); }
       else {              pos=new THREE.Vector3(RW-b.d-OFF, cy, o+w/2);  nrm=new THREE.Vector3(-1,0,0); }
-      ANNOTS.push({pos, nrm, title:`${wall.tag}. fal · ${u.label}`,
-                   sub:`${dimText(u,b)}  ·  ${u.o}–${u.o+u.w} mm`});
+      ANNOTS.push({pos, nrm, title:`${wall.tag}. fal Â· ${u.label}`,
+                   sub:`${dimText(u,b)}  Â·  ${u.o}â€“${u.o+u.w} mm`});
     }
   }
   ANNOTS.push({pos:new THREE.Vector3(WIN.o+WIN.w/2, WIN.sill+WIN.h/2, 70), nrm:new THREE.Vector3(0,0,1),
-               title:'Ablak', sub:`${WIN.w} × ${WIN.h} · könyöklő ${WIN.sill}`});
+               title:'Ablak', sub:`${WIN.w} Ă— ${WIN.h} Â· kĂ¶nyĂ¶klĹ‘ ${WIN.sill}`});
   ANNOTS.push({pos:new THREE.Vector3(1230, Y.top+60, 660), nrm:new THREE.Vector3(0,0,1),
-               title:'Munkalap', sub:`${Y.top} magasan · 600 mély · 40 vastag`});
+               title:'Munkalap', sub:`${Y.top} magasan Â· 600 mĂ©ly Â· 40 vastag`});
   ANNOTS.push({pos:new THREE.Vector3(820, Y.upperBot-90, 430), nrm:new THREE.Vector3(0,0,1),
-               title:'Hátfal a munkalap és a felsők között', sub:`${Y.upperBot-Y.top} mm`});
+               title:'HĂˇtfal a munkalap Ă©s a felsĹ‘k kĂ¶zĂ¶tt', sub:`${Y.upperBot-Y.top} mm`});
 
   ANNOTS.forEach(a=>{
     const el=document.createElement('div');
@@ -2015,8 +2028,8 @@ function buildAnnots(){
 }
 buildAnnots();
 
-/* Hová célzunk: sétánál mindig a célkereszt (a kép közepe),
-   forgatásnál az egérmutató, ha a képen van. */
+/* HovĂˇ cĂ©lzunk: sĂ©tĂˇnĂˇl mindig a cĂ©lkereszt (a kĂ©p kĂ¶zepe),
+   forgatĂˇsnĂˇl az egĂ©rmutatĂł, ha a kĂ©pen van. */
 const aim = {x:-1, y:-1};
 viewer.addEventListener('pointermove', e=>{
   const r = viewer.getBoundingClientRect();
@@ -2035,7 +2048,7 @@ function updateAnnots(cam){
   let best = null, bestScore = Infinity;
   for(const a of ANNOTS){
     const el = a.el;
-    // csak a kamera felé néző frontok, ésszerű távolságon belül
+    // csak a kamera felĂ© nĂ©zĹ‘ frontok, Ă©sszerĹ± tĂˇvolsĂˇgon belĂĽl
     _to.copy(_cam).sub(a.pos);
     const dist = _to.length();
     if(_to.dot(a.nrm) <= 0 || dist > 7200){ if(!el.hidden) el.hidden = true; continue; }
@@ -2048,7 +2061,7 @@ function updateAnnots(cam){
     const op = dist > 5200 ? '.55' : '.95';
     if(a._op !== op){ el.style.opacity = op; a._op = op; }
 
-    // a célkereszthez legközelebbi pont nyer; azonos közelségnél a kamerához közelebbi
+    // a cĂ©lkereszthez legkĂ¶zelebbi pont nyer; azonos kĂ¶zelsĂ©gnĂ©l a kamerĂˇhoz kĂ¶zelebbi
     const sd = Math.hypot(x-ax, y-ay);
     if(sd < 130){
       const score = sd + dist*0.012;
@@ -2056,7 +2069,7 @@ function updateAnnots(cam){
     }
   }
 
-  // mindig pontosan egy címke látszik: azé, amelyikre nézünk
+  // mindig pontosan egy cĂ­mke lĂˇtszik: azĂ©, amelyikre nĂ©zĂĽnk
   for(const a of ANNOTS){
     const on = (a === best);
     if(a._on !== on){
@@ -2078,13 +2091,13 @@ annotChk.addEventListener('change', ()=>{
   });
 });
 
-/* célkereszt ki-be */
+/* cĂ©lkereszt ki-be */
 const xhairChk = document.getElementById('xhair-on');
 const applyXhair = () => viewer.classList.toggle('xhair', xhairChk.checked);
 xhairChk.addEventListener('change', applyXhair);
 applyXhair();
 
-/* animációs hurok */
+/* animĂˇciĂłs hurok */
 const clock=new THREE.Clock();
 function resize(){
   const w=viewer.clientWidth, h=viewer.clientHeight;
@@ -2128,7 +2141,7 @@ function tick(){
 tick();
 loadingEl.classList.add('hide');
 
-/* érintésvezérlés-súgó csak telefonon, az első érintésig */
+/* Ă©rintĂ©svezĂ©rlĂ©s-sĂşgĂł csak telefonon, az elsĹ‘ Ă©rintĂ©sig */
 const touchHint = document.getElementById('touchhint');
 if(COARSE){
   touchHint.hidden = false;
