@@ -463,7 +463,7 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   <div class="wrap">
     <span>Konyhaterv · a 3 kézi vázlat és a helyszíni felmérés alapján</span>
     <span>Minden méret mm-ben, kész falfelülettől mérve</span>
-    <span>Verzió: 2026-11-19g · részletesebb kinti látkép</span>
+    <span>Verzió: 2026-11-19h · részletesebb kinti látkép</span>
   </div>
 </footer>
 
@@ -1388,22 +1388,9 @@ function buildRoom(){
   // könyöklő: a kávában marad, csak 24 mm-re áll ki — így a csaptelep nem ütközik bele
   box(WIN.w+110, 26, 174, M.wall, WIN.o+WIN.w/2, WIN.sill-13, -63);
 
-  // kinti háttér, távolabb tolva, elé néhány bokor — ettől lesz térbeli mélysége
+  // kinti háttér: a részletes festett látkép önmagában, 3D bokrok nélkül
   const out=new THREE.Mesh(new THREE.PlaneGeometry(7400,4000), M.out);
   out.position.set(WIN.o+WIN.w/2, 1500, -2600); kitchen.add(out);
-
-  const leaf = [
-    new THREE.MeshStandardMaterial({color:'#5A6B47', roughness:.95}),
-    new THREE.MeshStandardMaterial({color:'#6E7C52', roughness:.95})
-  ];
-  // a támfal felső éle a háttéren kb. 1160-nál van: ide ültetjük a bokrokat
-  [[1540,1270,-2200,150],[2180,1246,-2270,122],[2520,1258,-2180,136]].forEach(([x,y,z,r],i)=>{
-    const m = leaf[i%2];
-    const put=(rr,xx,yy,zz)=>{ const s=sph(rr,m,xx,yy,zz); s.castShadow=false; s.receiveShadow=false; return s; };
-    put(r, x, y, z).scale.set(1,.72,1);
-    put(r*0.70, x-r*0.62, y-r*0.28, z+r*0.35);
-    put(r*0.62, x+r*0.66, y-r*0.18, z-r*0.25);
-  });
 }
 
 /* ---- konyhaelemek ---- */
