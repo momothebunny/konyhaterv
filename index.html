@@ -463,7 +463,7 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   <div class="wrap">
     <span>Konyhaterv · a 3 kézi vázlat és a helyszíni felmérés alapján</span>
     <span>Minden méret mm-ben, kész falfelülettől mérve</span>
-    <span>Verzió: 2026-11-19f · munkalap és hátfal külön színezhető</span>
+    <span>Verzió: 2026-11-19g · részletesebb kinti látkép</span>
   </div>
 </footer>
 
@@ -1011,21 +1011,83 @@ function floorTexture(){
   t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=8;
   return t;
 }
+/* Kinti háttér: ég felhőkkel, távoli fasor, száraz füves rézsű és betontámfal —
+   a sávok magassága úgy van belőve, hogy az ablakon át pont a rézsű és a fal lássék. */
 function outsideTexture(){
-  const c=document.createElement('canvas'); c.width=512; c.height=512; const g=c.getContext('2d');
-  const sky=g.createLinearGradient(0,0,0,250);
-  sky.addColorStop(0,'#aec7da'); sky.addColorStop(1,'#d8e2e6'); g.fillStyle=sky; g.fillRect(0,0,512,250);
-  const hill=g.createLinearGradient(0,210,0,420);
-  hill.addColorStop(0,'#9c9469'); hill.addColorStop(1,'#7c7a52'); g.fillStyle=hill;
-  g.beginPath(); g.moveTo(0,260); g.bezierCurveTo(140,205,330,240,512,215); g.lineTo(512,430); g.lineTo(0,430); g.fill();
-  for(let i=0;i<1600;i++){
-    g.strokeStyle=`hsla(${48+Math.random()*22} ${22+Math.random()*18}% ${40+Math.random()*26}% / .5)`;
-    g.lineWidth=1; const x=Math.random()*512, y=230+Math.random()*190;
-    g.beginPath(); g.moveTo(x,y); g.lineTo(x+(Math.random()-.5)*5, y-6-Math.random()*8); g.stroke();
+  const W=1536, H=1024;
+  const c=document.createElement('canvas'); c.width=W; c.height=H;
+  const g=c.getContext('2d');
+  const rnd=(a,b)=>a+Math.random()*(b-a);
+
+  // ég
+  const sky=g.createLinearGradient(0,0,0,H*0.42);
+  sky.addColorStop(0,'#7CA3C6'); sky.addColorStop(.55,'#AFC9DC'); sky.addColorStop(1,'#D8E4E8');
+  g.fillStyle=sky; g.fillRect(0,0,W,H*0.42);
+  for(let i=0;i<34;i++){
+    const x=rnd(0,W), y=rnd(20,H*0.30), r=rnd(70,200);
+    const cl=g.createRadialGradient(x,y,0,x,y,r);
+    cl.addColorStop(0,'rgba(255,255,255,.50)'); cl.addColorStop(1,'rgba(255,255,255,0)');
+    g.fillStyle=cl; g.beginPath(); g.ellipse(x,y,r,r*0.40,0,0,Math.PI*2); g.fill();
   }
-  g.fillStyle='#a9a69f'; g.fillRect(0,408,512,104);
-  for(let i=0;i<70;i++){ g.fillStyle=`rgba(0,0,0,${.02+Math.random()*.05})`; g.fillRect(Math.random()*512,408+Math.random()*104,40,14); }
-  const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; return t;
+
+  // távoli fasor
+  const ridge=H*0.405;
+  g.fillStyle='#5F6F5C'; g.beginPath(); g.moveTo(0,ridge);
+  for(let x=0;x<=W;x+=18) g.lineTo(x, ridge - 16 - 30*Math.abs(Math.sin(x*0.0105)) - 14*Math.sin(x*0.041));
+  g.lineTo(W,H*0.47); g.lineTo(0,H*0.47); g.closePath(); g.fill();
+  for(let i=0;i<150;i++){
+    const x=rnd(0,W), y=ridge-rnd(4,44), r=rnd(10,28);
+    g.fillStyle=`hsl(${rnd(88,124)} ${rnd(12,26)}% ${rnd(22,36)}%)`;
+    g.beginPath(); g.arc(x,y,r,0,Math.PI*2); g.fill();
+  }
+
+  // száraz füves rézsű
+  const s0=H*0.43, s1=H*0.585;
+  const slope=g.createLinearGradient(0,s0,0,s1);
+  slope.addColorStop(0,'#7F7C4E'); slope.addColorStop(.45,'#A39A63'); slope.addColorStop(1,'#8E8755');
+  g.fillStyle=slope; g.fillRect(0,s0,W,s1-s0);
+  for(let i=0;i<11000;i++){
+    const x=rnd(0,W), y=rnd(s0,s1), l=rnd(4,13);
+    g.strokeStyle=`hsla(${rnd(44,76)} ${rnd(20,46)}% ${rnd(30,64)}% / .5)`;
+    g.lineWidth=1;
+    g.beginPath(); g.moveTo(x,y); g.lineTo(x+rnd(-2.5,2.5), y-l); g.stroke();
+  }
+  // bokrok a rézsűn: több átfedő, halvány folt, hogy ne pöttyözöttnek lássék
+  for(let i=0;i<32;i++){
+    const bx=rnd(0,W), by=rnd(s0+22,s1-14), r=rnd(14,42);
+    g.fillStyle=`hsla(${rnd(78,118)} ${rnd(12,26)}% ${rnd(22,36)}% / .38)`;
+    for(let k=0;k<4;k++){
+      g.beginPath();
+      g.ellipse(bx+rnd(-r*.55,r*.55), by+rnd(-r*.3,r*.3), r*rnd(.55,1), r*rnd(.35,.68), 0, 0, Math.PI*2);
+      g.fill();
+    }
+  }
+
+  // betontámfal
+  const wt=H*0.585;
+  const wg=g.createLinearGradient(0,wt,0,H);
+  wg.addColorStop(0,'#B6B3AC'); wg.addColorStop(.28,'#A8A59E'); wg.addColorStop(1,'#8C8983');
+  g.fillStyle=wg; g.fillRect(0,wt,W,H-wt);
+  for(let i=0;i<320;i++){
+    g.fillStyle=`rgba(${rnd(60,125)|0},${rnd(58,122)|0},${rnd(54,116)|0},${rnd(.03,.10)})`;
+    g.fillRect(rnd(0,W), rnd(wt,H), rnd(40,170), rnd(8,30));
+  }
+  g.strokeStyle='rgba(0,0,0,.20)'; g.lineWidth=3;
+  for(let x=0;x<=W;x+=256){ g.beginPath(); g.moveTo(x,wt); g.lineTo(x,H); g.stroke(); }
+  g.strokeStyle='rgba(0,0,0,.10)'; g.lineWidth=2;
+  for(let y=wt+96;y<H;y+=96){ g.beginPath(); g.moveTo(0,y); g.lineTo(W,y); g.stroke(); }
+  // csurgásnyomok a fal tetejéről
+  for(let i=0;i<40;i++){
+    const x=rnd(0,W);
+    g.fillStyle=`rgba(70,68,62,${rnd(.04,.11)})`;
+    g.fillRect(x, wt+6, rnd(5,16), rnd(40,190));
+  }
+  g.fillStyle='#C6C3BB'; g.fillRect(0,wt,W,9);
+  g.fillStyle='rgba(0,0,0,.14)'; g.fillRect(0,wt+9,W,6);
+
+  const t=new THREE.CanvasTexture(c);
+  t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=8;
+  return t;
 }
 
 /* ---- anyagok ---- */
@@ -1045,7 +1107,8 @@ const M = {
   dark:   new THREE.MeshStandardMaterial({color:'#17191B', roughness:.22, metalness:.25}),
   steel:  new THREE.MeshStandardMaterial({color:'#B9BDC0', roughness:.28, metalness:.85}),
   frame:  new THREE.MeshStandardMaterial({color:'#24282B', roughness:.6}),
-  glass:  new THREE.MeshStandardMaterial({color:'#cfe0ea', transparent:true, opacity:.22, roughness:.06, metalness:.1}),
+  // halvány üveg, kevés tükröződéssel — így a kinti látkép tisztán átlátszik
+  glass:  new THREE.MeshStandardMaterial({color:'#dCe8ee', transparent:true, opacity:.13, roughness:.05, metalness:.08, envMapIntensity:.45}),
   led:    new THREE.MeshStandardMaterial({color:'#fff6e2', emissive:'#ffdfa8', emissiveIntensity:1.5, roughness:1}),
   out:    new THREE.MeshBasicMaterial({map:outsideTexture()}),
   plant:  new THREE.MeshStandardMaterial({color:'#4E7A4A', roughness:.85}),
@@ -1090,7 +1153,7 @@ const M = {
  [[M.floor], .42],
  [[M.base,M.upper,M.tall,M.carcass,M.plinth,M.shelf], .55],
  [[M.top,M.splash], .75],
- [[M.chrome,M.satin,M.steel,M.inox,M.grip,M.glass], 1.35],
+ [[M.chrome,M.satin,M.steel,M.inox,M.grip], 1.35],
  [[M.appBody,M.appGlass,M.appGlass2,M.dark,M.frame,M.gasket], 1.10],
  [[M.cer,M.cerA,M.wood,M.cloth,M.pot,M.plant,M.board,M.display], .55]
 ].forEach(([list,v]) => list.forEach(m => { if(m) m.envMapIntensity = v; }));
@@ -1325,9 +1388,22 @@ function buildRoom(){
   // könyöklő: a kávában marad, csak 24 mm-re áll ki — így a csaptelep nem ütközik bele
   box(WIN.w+110, 26, 174, M.wall, WIN.o+WIN.w/2, WIN.sill-13, -63);
 
-  // kinti háttér
-  const out=new THREE.Mesh(new THREE.PlaneGeometry(7000,4600), M.out);
-  out.position.set(WIN.o+WIN.w/2, 1400, -1700); kitchen.add(out);
+  // kinti háttér, távolabb tolva, elé néhány bokor — ettől lesz térbeli mélysége
+  const out=new THREE.Mesh(new THREE.PlaneGeometry(7400,4000), M.out);
+  out.position.set(WIN.o+WIN.w/2, 1500, -2600); kitchen.add(out);
+
+  const leaf = [
+    new THREE.MeshStandardMaterial({color:'#5A6B47', roughness:.95}),
+    new THREE.MeshStandardMaterial({color:'#6E7C52', roughness:.95})
+  ];
+  // a támfal felső éle a háttéren kb. 1160-nál van: ide ültetjük a bokrokat
+  [[1540,1270,-2200,150],[2180,1246,-2270,122],[2520,1258,-2180,136]].forEach(([x,y,z,r],i)=>{
+    const m = leaf[i%2];
+    const put=(rr,xx,yy,zz)=>{ const s=sph(rr,m,xx,yy,zz); s.castShadow=false; s.receiveShadow=false; return s; };
+    put(r, x, y, z).scale.set(1,.72,1);
+    put(r*0.70, x-r*0.62, y-r*0.28, z+r*0.35);
+    put(r*0.62, x+r*0.66, y-r*0.18, z-r*0.25);
+  });
 }
 
 /* ---- konyhaelemek ---- */
