@@ -463,7 +463,7 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   <div class="wrap">
     <span>Konyhaterv · a 3 kézi vázlat és a helyszíni felmérés alapján</span>
     <span>Minden méret mm-ben, kész falfelülettől mérve</span>
-    <span>Verzió: 2026-11-19d · 6 színváltozat + saját színek</span>
+    <span>Verzió: 2026-11-19e · hűtő-fagyasztó két ajtóval</span>
   </div>
 </footer>
 
@@ -559,7 +559,7 @@ const SCHEDULE = [
   ['A1','Sarokzóna (a 2. fal eleme tölti ki)', 600, 900, 600, 'Alsó szinten vakfelület'],
   ['A2','Alsó szekrény, ajtós', 300, 760, 600, 'Munkalap fut fölötte, a sarokból kifordulva'],
   ['A3','Felső szekrény polcokkal', 300, 930, 350, 'Az A2 fölött, 1500-tól 2430-ig'],
-  ['A4','Hűtő magas elem, beépített hűtőhöz', 600, 2430, '600–620', 'Hűtőajtó kb. 1780, fölötte szekrény'],
+  ['A4','Hűtő-fagyasztó magas elem', 600, 2430, '600–620', 'Fagyasztó 100–655, hűtő 659–1880, fölötte szekrény'],
   ['B','2 · Ablakos fal'],
   ['B1','Sarok alsó szekrény', 1030, 760, 600, '600 ajtó + 430 vak visszatérés'],
   ['B2','Mosogatógép, integrált front', 600, 820, 570, 'Bújtatott front'],
@@ -583,7 +583,7 @@ const SCHEDULE = [
 ];
 
 const APPLIANCES = [
-  ['Bal fal', 'Beépített hűtőszekrény', 'Teljes magasságú elembe bújtatva, a bejárat felőli végen.', '600 mm széles · 2430 mm magas korpusz'],
+  ['Bal fal', 'Beépített hűtő-fagyasztó', 'Két ajtó: alul fagyasztó, fölötte hűtő, bútorlappal bújtatva.', 'Fagyasztó 555, hűtő 1221 mm ajtómagasság'],
   ['Ablakos fal', 'Mosogatógép', 'Bújtatott front, felül keskeny inox kezelősávval, a mosogató mellett.', '600 mm beépítési szélesség'],
   ['Ablakos fal', 'Mosogató és csaptelep', 'Az ablak tengelyében, 1630–2230 között.', '600 mm-es alsó elem'],
   ['Jobb fal', 'Főzőlap', 'A fiókos elem fölött, 600–1200 közötti szakaszon.', '600 mm-es elem · kb. 580×500 vágat'],
@@ -690,10 +690,12 @@ function elevationSVG(wall){
         break;}
       case 'tallFridge':
         out.push(`<rect class="dw-tall" x="${x}" y="${sy(RH)}" width="${u.w}" height="${RH}"/>`);
-        out.push(front(x, Y.plinth, u.w, 1780));
+        out.push(front(x, Y.plinth, u.w, 555));      // fagyasztóajtó
+        out.push(front(x, 659, u.w, 1221));          // hűtőajtó
         out.push(front(x, 1900, u.w, 530));
         out.push(`<rect class="dw-front" x="${x+14}" y="${sy(RH)+14}" width="${u.w-28}" height="72"/>`);
-        out.push(`<text class="dw-lbl" x="${x+u.w/2}" y="${sy(950)}">Hűtő</text>`);
+        out.push(`<text class="dw-lbl" x="${x+u.w/2}" y="${sy(1250)}">Hűtő</text>`);
+        out.push(`<text class="dw-lbl-s" x="${x+u.w/2}" y="${sy(378)}">Fagyasztó</text>`);
         break;
       case 'tallOven':{
         out.push(`<rect class="dw-tall" x="${x}" y="${sy(RH)}" width="${u.w}" height="${RH}"/>`);
@@ -1361,8 +1363,10 @@ function buildCabinets(){
 
         case 'tallFridge': {
           addCarc(wid,o,w,Y.plinth,TH,DEP.tall,M.carcass);
-          panelAt(wid,o-3,w+6,Y.plinth-5,1790,DEP.tall-20,10,M.gasket); // árnyékfuga az ajtó körül
-          addFront(wid,o,w,Y.plinth,1780,DEP.tall,M.tall);   // hűtőajtó 100–1880
+          panelAt(wid,o-3,w+6,Y.plinth-5,1790,DEP.tall-20,10,M.gasket); // árnyékfuga az ajtók körül
+          addFront(wid,o,w,Y.plinth,555,DEP.tall,M.tall);    // fagyasztóajtó 100–655
+          addGrip(wid,o,w,625,DEP.tall);
+          addFront(wid,o,w,659,1221,DEP.tall,M.tall);        // hűtőajtó 659–1880
           addGrip(wid,o,w,1850,DEP.tall);
           addFront(wid,o,w,1900,530,DEP.tall,M.tall);        // szekrény 1900–2430
           addGrip(wid,o,w,1930,DEP.tall);
@@ -1844,7 +1848,7 @@ const VIEWS = {
   door:   {p:[760, 1600, 2080], yaw:-0.46,       pitch:-0.05},
   sink:   {p:[1930,1600, 1480], yaw: 0.00,       pitch:-0.12},
   hob:    {p:[1950,1600, 1150], yaw:-Math.PI/2,  pitch:-0.10},
-  fridge: {p:[1520,1600, 1240], yaw: Math.PI/2,  pitch:-0.04}
+  fridge: {p:[2330,1430, 1430], yaw: Math.PI/2,  pitch:-0.02}
 };
 document.querySelectorAll('[data-view]').forEach(b=>{
   b.addEventListener('click',()=>{
